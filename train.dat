@@ -2,7 +2,7 @@
 Home_Owner{Yes,No}
 Marital_Status{Single,Married,Divorced}
 Annual_Income{@}
-Defaulted_Borrower{Yes,No}
+Defaulted_Borrower@{Yes,No}
 #
 0,0,125,1
 1,1,100,1
