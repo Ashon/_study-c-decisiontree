@@ -17,6 +17,7 @@
 #define MAX_BUF 255
 
 #define ULL unsigned long long
+
 /**
  * attr Type Constant
  */
@@ -65,24 +66,27 @@ void dbg_a(attr*);
  * ADT - Object
  */
 typedef struct obj_ {
-    int* property_int;
-    float* property_float;
+    int* prop_int;
+    // float* prop_float;
 
     struct obj_* next;
 } obj;
 
-obj* new_o(obj*, char*);
+obj* new_o(obj*, char*, int);
 int del_o(obj*);
-void dbg_o(obj*);
+void dbg_o(obj*, int);
 
 /*
  * new_node
  *
+ * @description
+ *    makes a new atNode instance next of *an.
+ *
  * @param
- *    an - link point.
+ *    an - atNode pointer to attach a new atNode
  *
  * @return
- *    atNode* - next nodes pointer.
+ *    atNode* - new atNode instance's pointer
  */
 atNode* new_an(atNode* an, char* str) {
     atNode* instance;
@@ -103,9 +107,14 @@ atNode* new_an(atNode* an, char* str) {
 }
 
 /*
- * free node
+ * del_an
+ *
+ * @description
+ *    free memory all of atNode
+ *
  * @param
  *    head - head of atNode.
+ *
  * @return
  *    0 - returns 0 when 'free' finished.
  */
@@ -121,13 +130,13 @@ int del_an(atNode* head) {
         if(q->name)
             free(q->name);
         free(q);
-    }while(p);
+    } while(p);
 
     return 0;
 }
 
-void dbg_an(atNode* an) {
-    atNode* cur = an;
+void dbg_an(atNode* head) {
+    atNode* cur = head;
     for(; cur; cur = cur->next) {
         printf("     ## atNode@%p", cur);
         if(cur->next == 0 && cur->name == 0)
@@ -146,27 +155,43 @@ void dbg_an(atNode* an) {
 }
 
 /*
- * attribute function.
+ * new_a
+ *
+ * @description
+ *    makes a new attr instance next of *a.
+ * 
+ * @param
+ *    a - attr pointer to attach a new node.
+ *
+ *    str - string
+ *       formatted string such as "[ATTR_NAME]{[NODE_NAME],[NODE_NAME], .. }"
+ *       [ATTR_NAME] - attribute's name
+ *       [NODE_NAME] - node(class)'s name of attribute.
+ *
+ * @return
+ *    attr* - new attr instance's pointer.
  */
 attr* new_a(attr* a, char* str) {
     attr* instance;
     atNode* cur;
 
-    char* name;
+    char* buf;
+
     char* nodes;
     char* node;
-    int i, length;
+    int count_node;
+    int name_length;
 
     instance = (attr*)malloc(sizeof(attr));
     if(a) {
         instance->type = (int*)malloc(sizeof(int));
         *(instance->type) = -1;
 
-        name = (char*)calloc(MAX_BUF, sizeof(char));
-        strcpy(name, strtok(str,"{"));
-        instance->name = (char*)calloc(strlen(name) + 1, sizeof(char));
-        strcpy(instance->name, name);
-        free(name);
+        buf = (char*)calloc(MAX_BUF, sizeof(char));
+        strcpy(buf, strtok(str,"{"));
+        instance->name = (char*)calloc(strlen(buf) + 1, sizeof(char));
+        strcpy(instance->name, buf);
+        free(buf);
 
         nodes = strtok(0, "}");
         node = strtok(nodes, ",");
@@ -175,30 +200,30 @@ attr* new_a(attr* a, char* str) {
             cur = instance->node_an;
         }
 
-        i = 0;
-        length = strlen(instance->name);
-
-        if(!strcmp(&instance->name[length - 1], "@")){
+        name_length = strlen(instance->name);
+        if(!strcmp(&instance->name[name_length - 1], "@")){
             *(instance->type) = AT_TYPE_CLASS;
-            instance->name[length - 1] = '\0';
+            instance->name[name_length - 1] = '\0';
         }
 
         if(!strcmp(node, "@")) {
             *(instance->type) = AT_TYPE_CONTINUOUS;
         } else {
+            count_node = 0;
             do {
                 cur = new_an(cur, node);
-                i++;
-            } while((node = strtok(0, ",")) != 0);
+                count_node++;
+            } while(node = strtok(0, ","));
         }
 
         if(*(instance->type) == -1)
-            if(2 < i)
+            if(2 < count_node)
                 *(instance->type) = AT_TYPE_CATEGORICAL;
             else
                 *(instance->type) = AT_TYPE_BINARY;
 
         a->next = instance;
+
     } else {
         instance->name = 0;
         instance->type = 0;
@@ -206,12 +231,14 @@ attr* new_a(attr* a, char* str) {
     }
 
     instance->next = 0;
+
     return instance;
 }
 
 int del_a(attr* head) {
     attr* p = head;
     attr* q;
+
     do {
         q = p;
         p = p->next;
@@ -225,11 +252,13 @@ int del_a(attr* head) {
         //
         free(q);
     } while(p);
+
     return 0;
 }
 
 void dbg_a(attr* attr) {
-    printf("\n## attr@%p", attr);
+    printf("## attr@%p", attr);
+
     if(!attr->next && !attr->name)
         printf(" [BLANK]\n");
     else {
@@ -237,10 +266,12 @@ void dbg_a(attr* attr) {
             printf(" -> %p", attr->next);
         else
             printf(" [TAIL]");
+
         if(attr->name)
             printf("\n   > name = %s\n", attr->name);
         else
             printf(" [HEAD]\n");
+
         if(attr->type) {
             printf("   > type = %d",*(attr->type));
             switch(*(attr->type)) {
@@ -258,6 +289,7 @@ void dbg_a(attr* attr) {
                 break;
             }
         }
+
         if(attr->node_an) {
             printf("   > node_an = %p\n", attr->node_an);
             dbg_an(attr->node_an);
@@ -265,15 +297,37 @@ void dbg_a(attr* attr) {
     }
 }
 
-
 /*
- * Object control function.
+ * new_o
+ *
+ * @description
+ *    makes a new obj instance next of o.
+ *
+ * @param
+ *    o - target obj
+ *    str - formatted string likes.. "1,2,3,4"
+ * 
+ * @return
+ *    obj* - new obj instance's pointer.
  */
-
-obj* new_o(obj* o, char* str) {
+obj* new_o(obj* o, char* str, int length) {
+    char* buf;
     obj* instance = (obj*)malloc(sizeof(obj));
-    // todo for new
 
+    int* cur;
+    // todo for new
+    if(length){
+        instance->prop_int = (int*)calloc(length, sizeof(int));
+
+        buf = strtok(str, ",");
+        cur = instance->prop_int;
+
+        do {
+            *(cur++) = (int)atoi(buf);
+        } while(buf = strtok(0, ","));
+
+    } else
+        instance->prop_int = 0;
 
     if(o)
         o->next = instance;
@@ -282,18 +336,60 @@ obj* new_o(obj* o, char* str) {
     return instance;
 }
 
+/*
+ * del_o
+ * 
+ * @description
+ *    free memory all of obj's node.
+ * 
+ * @param
+ *    o - target obj node.
+ */
 int del_o(obj* head) {
     obj* p = head;
     obj* q;
+
     do {
         q = p;
         p = p->next;
-        // todo for free.
-
-
+        // todo for free q.
+        free(q->prop_int);
         free(q);
     } while(p);
+
     return 0;
+}
+
+/*
+ * dbg_o
+ * 
+ * print log of object node.
+ */
+void dbg_o(obj* head, int length) {
+    obj* cur = head;
+    int i;
+    for(; cur; cur = cur->next) {
+        printf("## objNode@%p", cur);
+        if(cur->next == 0 && cur->prop_int == 0)
+            printf(" [BLANK]\n");
+        else {
+            if(cur->next)
+                printf(" -> %p", cur->next);
+            else
+                printf(" [TAIL]");
+            if(cur->prop_int){
+                printf("\n   > values = [");
+                for(i = 0;i < length; i++){
+                    printf("%d", cur->prop_int[i]);
+                    if(i < length - 1)
+                        printf(", ");
+                }
+                printf("]\n");
+            }
+            else
+                printf(" [HEAD]\n");
+        }
+    }
 }
 
 // main
@@ -301,59 +397,60 @@ int main() {
     FILE* fp;
     char *str = (char*)calloc(MAX_BUF, sizeof(char));
     char filename[] = "./train.dat";
-
-    printf("263: ## init node_attr .. ");
-    attr* node_attr = new_a(0, 0);
-    attr* cur_a = node_attr;
-    printf("complete\n");
-
-    printf("268: ## init node_obj .. ");
-    obj* node_obj = new_o(0, 0);
-    obj* cur_o = node_obj;
-    printf("complete\n");
-
-    int cond = 0;
-
-    printf("275: ## open data file > %s .. ", filename);
+    int cond = -1;
+    // # of attribute
+    int len_a = 0;
+    attr* node_attr;
+    attr* cur_a;
+    obj* node_obj;
+    obj* cur_o;
     fp = fopen(filename, "r");
+
     if(fp == NULL){
-        printf(" !error\n");
-        printf("279: ## file open error\n");
+        printf("file open error\n");
         return 1;
+
     } else {
-        printf("complete\n");
-        printf("283: ## read file\n");
+        node_attr = new_a(0, 0);
+        cur_a = node_attr;
+
+        node_obj = new_o(0, 0, 0);
+        cur_o = node_obj;
+
+        cond++;
+
         while(fgets(str, MAX_BUF, fp)) {
             if(0 < strlen(str))
                 str[strlen(str) - 1] = '\0';
-//            printf(" readline[cond = %d]> %s", cond, str);
 
             if(!strcmp(str, "#")) {
-                printf("290: ## condtion : %d\n", ++cond);
+                cond++;
                 continue;
             }
 
             if(cond == 1) {
-                printf("295:   > gen node_attr : %p <- \"%s\"", cur_a, str);
                 cur_a = new_a(cur_a, str);
+                len_a++;
             }
 
             if(cond == 2) {
-                printf("300:   > gen node_obj : %p <- \"%s\"", cur_o, str);
-                cur_o = new_o(cur_o, str);
+                cur_o = new_o(cur_o, str, len_a);
             }
-
-            printf("\n");
         }
     }
+
     // attrnode traversal
     for(cur_a = node_attr; cur_a; cur_a = cur_a->next)
         dbg_a(cur_a);
 
+    cur_o = node_obj;
+    dbg_o(cur_o, len_a);
+
     del_a(node_attr);
     del_o(node_obj);
+
     free(str);
     fclose(fp);
+
     return 0;
 }
-
