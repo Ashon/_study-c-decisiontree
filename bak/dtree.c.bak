@@ -26,14 +26,14 @@
  * ADTs for decision tree generator.
  *
  * @dependency
- *  +-> d_tree : decision tree
+ *  +-> dtree : decision tree
  *    |
  *    +---> int* len_attr : length of attribute node (direct)
  *    +---> int* len_obj : length of object node (direct)
  *    |
  *    +---> attr* node_attr : [single list]
  *    |   |
- *    |   +---> int* len_attr : points to [d_tree->len_attr] (indirect)
+ *    |   +---> int* len_attr : points to [dtree->len_attr] (indirect)
  *    |   +---> char* name : attribute name
  *    |   +---> int* type : attribte type
  *    |   +---> int* len_clss : length of attribute's class.
@@ -49,15 +49,21 @@
  *    |
  *    +---> obj* node_obj : [single list]
  *        |
- *        +---> int* len_obj : points to [d_tree->len_obj] (indirect)
- *        +---> int* len_prop : points to [d_tree->len_attr] (indirect)
- *        +---> int* prop_int : property array of obj.
+ *        +---> int* len_obj : points to [dtree->len_obj] (indirect)
+ *        +---> int* len_prop : # of property (direct)
+ *        |
+ *        +---> prop* node_prop : [single list]
+ *        |   |
+ *        |   +---> int* len_prop : points to [obj->len_prop] (indirect)
+ *        |   +---> int* val : property value.
+ *        |   |
+ *        |   +---> prop* link : next prop node.
  *        |
  *        +---> obj* link : next obj node.
  *
  * @constraint
- *    - # of obj's property equals to # of attr
- *    - all of [single list] has a head node is empty.
+ *    - # of obj's property equals to # of attr:
+ *    - all of [single list]s have empty head node.
  *        [HEAD] -> [node] -> ... -> 0
  */
 
@@ -97,40 +103,56 @@ int del_attr(attr*);
 void dbg_attr(attr*);
 
 /**
+ * ADT - prop
+ */
+typedef struct prop_ {
+    int* len_prop; // indirect
+    int* val;
+    struct prop_* link;
+} prop;
+
+// function table of prop
+prop* new_prop(prop*, int*, int*);
+int len_prop(prop*);
+int get(prop*);
+int del_prop(prop*);
+void dbg_prop(prop*);
+
+/**
  * ADT - obj
  */
 typedef struct obj_ {
     int* len_obj; // indirect
-    int* len_prop; // indirect
-    int* prop_int;
+    int* len_prop; // direct
+    prop* node_prop;
     // float* prop_float;
     struct obj_* link;
 } obj;
 
 // function table of obj
-obj* new_obj(obj*, char*, int*, int*);
+obj* new_obj(obj*, char*, int*);
 int len_obj(obj*);
-int len_prop(obj*);
 int del_obj(obj*);
 void dbg_obj(obj*);
 
 /**
- * ADT - d_tree
+ * ADT - dtree
  */
-typedef struct d_tree_ {
+typedef struct dtree_ {
     int* len_attr;
     int* len_obj;
     attr* node_attr;
     obj* node_obj;
-} d_tree;
+} dtree;
 
-// function table of d_tree
-d_tree* new_dtree(d_tree*, char*);
-int del_dtree(d_tree*);
+// function table of dtree
+dtree* new_dtree(dtree*, FILE*);
+int del_dtree(dtree*);
+void dbg_dtree(dtree*);
 
 // ======== Implementation of ADT ========
 
-/*
+/**
  * new_clss(clss*, char*, int*)
  *
  * @description
@@ -165,7 +187,7 @@ clss* new_clss(clss* c, char* str, int* len_clss) {
     return ins;
 }
 
-/*
+/**
  * len_clss(clss*)
  * 
  * @description
@@ -181,7 +203,7 @@ int len_clss(clss* c) {
     return *(c->len_clss);
 }
 
-/*
+/**
  * del_clss(clss*)
  *
  * @description
@@ -230,7 +252,7 @@ void dbg_clss(clss* head) {
     }
 }
 
-/*
+/**
  * new_attr(attr*, char*, int*)
  *
  * @description
@@ -260,6 +282,7 @@ attr* new_attr(attr* a, char* str, int* len_attr) {
 
     ins = (attr*)malloc(sizeof(attr));
     ins->len_attr = len_attr;
+
     *(ins->len_attr) = *(ins->len_attr) + 1;
 
     if(a) {
@@ -299,9 +322,7 @@ attr* new_attr(attr* a, char* str, int* len_attr) {
                 *(ins->type) = AT_TYPE_BINARY;
 
         a->link = ins;
-
     } else {
-        ins->len_attr = len_attr;
         ins->name = 0;
         ins->type = 0;
         ins->len_clss = 0;
@@ -313,7 +334,7 @@ attr* new_attr(attr* a, char* str, int* len_attr) {
     return ins;
 }
 
-/*
+/**
  * len_attr(attr*)
  *
  * @description
@@ -329,7 +350,7 @@ int len_attr(attr* a) {
     return *(a->len_attr);
 }
 
-/*
+/**
  * del_attr(attr*)
  *
  * @description
@@ -364,49 +385,111 @@ int del_attr(attr* head) {
     return 0;
 }
 
-void dbg_attr(attr* attr) {
-    printf("## attr@%p", attr);
-
-    if(!attr->link && !attr->name)
-        printf(" [BLANK]\n");
-    else {
-        if(attr->link)
-            printf(" -> %p", attr->link);
-        else
-            printf(" [TAIL]");
-
-        if(attr->name)
-            printf("\n   > name = %s\n", attr->name);
-        else
-            printf(" [HEAD - len:%d]\n", *(attr->len_attr));
-
-        if(attr->type) {
-            printf("   > type = %d",*(attr->type));
-            switch(*(attr->type)) {
-                case 0 :
-                    printf(" [T_CLASS]\n");
-                break;
-                case 1 :
-                    printf(" [T_BINARY]\n");
-                break;
-                case 2 :
-                    printf(" [T_CATEGORICAL]\n");
-                break;
-                case 3 :
-                    printf(" [T_CONTINUOUS]\n");
-                break;
+void dbg_attr(attr* head) {
+    attr* cur = head;
+    for(; cur; cur = cur->link){
+        printf("## attr@%p", cur);
+        if(!cur->link && !cur->name)
+            printf(" [BLANK]\n");
+        else {
+            if(cur->link)
+                printf(" -> %p", cur->link);
+            else
+                printf(" [TAIL]");
+    
+            if(cur->name)
+                printf("\n   > name = %s\n", cur->name);
+            else
+                printf(" [HEAD - len:%d]\n", *(cur->len_attr));
+    
+            if(cur->type) {
+                printf("   > type = %d",*(cur->type));
+                switch(*(cur->type)) {
+                    case 0 :
+                        printf(" [T_CLASS]\n");
+                    break;
+                    case 1 :
+                        printf(" [T_BINARY]\n");
+                    break;
+                    case 2 :
+                        printf(" [T_CATEGORICAL]\n");
+                    break;
+                    case 3 :
+                        printf(" [T_CONTINUOUS]\n");
+                    break;
+                }
             }
-        }
-
-        if(attr->node_clss) {
-            printf("   > node_clss = %p\n", attr->node_clss);
-            dbg_clss(attr->node_clss);
+    
+            if(cur->node_clss) {
+                printf("   > node_clss = %p\n", cur->node_clss);
+                dbg_clss(cur->node_clss);
+            }
         }
     }
 }
+/**
+ * new_prop
+ */
+prop* new_prop(prop* p, int* val, int* len_prop) {
+    prop* ins = (prop*)malloc(sizeof(prop));
+    ins->len_prop = len_prop;
+    *(ins->len_prop) = *(ins->len_prop) + 1;
 
-/*
- * new_obj
+    if(val) {
+        ins->val = (int*)malloc(sizeof(int));
+        *(ins->val) = *(val);
+    } else
+        ins->val = 0;
+
+    if(p)
+        p->link = ins;
+
+    ins->link = 0;
+    return ins;
+}
+
+int len_prop(prop* p) {
+    return *(p->len_prop);
+}
+
+int get_prop(prop* p) {
+    return *(p->val);
+}
+
+int del_prop(prop* head) {
+    prop* p = head;
+    prop* q;
+    do {
+        q = p;
+        p = p->link;
+        if(q->val);
+            free(q->val);
+        free(q);
+    } while(p);
+    return 0;
+}
+
+void dbg_prop(prop* head) {
+    prop* cur = head;
+
+    for(; cur; cur = cur->link) {
+        printf("     ## prop@%p", cur);
+        if(cur->link == 0 && cur->val == 0)
+            printf(" [BLANK]\n");
+        else {
+            if(cur->link)
+                printf(" -> %p", cur->link);
+            else
+                printf(" [TAIL]");
+            if(cur->val)
+                printf("\n        > val = %d\n", *(cur->val));
+            else
+                printf(" [HEAD - len:%d]\n", len_prop(cur));
+        }
+    }
+}
+/**
+ * new_obj(obj*, char*, int*)
  *
  * @description
  *    makes a new obj ins link of o.
@@ -421,27 +504,31 @@ void dbg_attr(attr* attr) {
  * @return
  *    obj* - new obj instance's pointer.
  */
-obj* new_obj(obj* o, char* str, int* len_obj, int* len_prop) {
-    char* buf;
+obj* new_obj(obj* o, char* str, int* len_obj) {
     obj* ins = (obj*)malloc(sizeof(obj));
-
-    int* cur;
+    prop* cur;
+    char* buf;
+    int val;
     // todo for new
+
     ins->len_obj = len_obj;
     *(ins->len_obj) = *(ins->len_obj) + 1;
 
-    ins->len_prop = len_prop;
+    if(str) {
+        ins->len_prop = (int*)malloc(sizeof(int));
+        *(ins->len_prop) = 0;
 
-    if(*(len_prop)) {
-        ins->prop_int = (int*)calloc(*(len_prop), sizeof(int));
-        cur = ins->prop_int;
+        ins->node_prop = new_prop(0, 0, ins->len_prop);
+        cur = ins->node_prop;
 
         buf = strtok(str, ",");
         do {
-            *(cur++) = (int)atoi(buf);
+            val = atoi(buf);
+            cur = new_prop(cur, &val, ins->len_prop);
         } while(buf = strtok(0, ","));
+
     } else {
-        ins->prop_int = 0;
+        ins->node_prop = 0;
     }
     
     if(o)
@@ -451,7 +538,7 @@ obj* new_obj(obj* o, char* str, int* len_obj, int* len_prop) {
     return ins;
 }
 
-/*
+/**
  * len_o(obj*)
  *
  * @description
@@ -467,10 +554,7 @@ int len_obj(obj* o) {
     return *(o->len_obj);
 }
 
-int len_prop(obj* o) {
-    return *(o->len_prop);
-}
-/*
+/**
  * del_o
  * 
  * @description
@@ -490,14 +574,15 @@ int del_obj(obj* head) {
         q = p;
         p = p->link;
         // todo for free q.
-        free(q->prop_int);
+        if(q->node_prop)
+            del_prop(q->node_prop);
         free(q);
     } while(p);
 
     return 0;
 }
 
-/*
+/**
  * dbg_o
  * 
  * print log of object node.
@@ -505,93 +590,73 @@ int del_obj(obj* head) {
 void dbg_obj(obj* head) {
     obj* cur = head;
     int i;
-    int length = len_prop(head);
+
     for(; cur; cur = cur->link) {
         printf("## obj@%p", cur);
-        if(cur->link == 0 && cur->prop_int == 0)
+        if(!cur->link && !cur->node_prop)
             printf(" [BLANK]\n");
         else {
             if(cur->link)
                 printf(" -> %p", cur->link);
             else
                 printf(" [TAIL]");
-            if(cur->prop_int){
-                printf("\n   > values[len:%d] = [", length);
-                for(i = 0;i < length; i++){
-                    printf("%d", cur->prop_int[i]);
-                    if(i < length - 1)
-                        printf(", ");
-                }
-                printf("]\n");
-            }
-            else
-                printf(" [HEAD - len:%d]\n", len_obj(cur));
+            printf("\n");
+            if(cur->node_prop) {
+                printf("   > node_prop = %p\n", cur->node_prop);
+                dbg_prop(cur->node_prop);
+            } else
+                printf(" [HEAD - len:%d]\n", *(cur->len_obj)); 
         }
     }
 }
 
-d_tree* new_dtree(d_tree* t, char* filename) {
-    d_tree* ins;
-
-    FILE* fp;
-    char *buf;
+dtree* new_dtree(dtree* t, FILE* fp) {
+    char *buf = (char*)calloc(MAX_BUF, sizeof(char));
     int cond = -1;
 
     attr* cur_attr;
     obj* cur_obj;
 
-    printf("file open");
+    dtree* ins = (dtree*)malloc(sizeof(dtree));
 
-    if((fp = fopen(filename, "r"))== 0){
-        printf("file open error");
-        return 0;
-    } else {
-        printf("*****");
-        ins = (d_tree*)malloc(sizeof(d_tree));
-        buf = (char*)calloc(MAX_BUF, sizeof(char));
+    ins->len_attr = (int*)malloc(sizeof(int));
+    ins->len_obj = (int*)malloc(sizeof(int));
 
-        printf("alloc");
-        ins->len_attr = (int*)malloc(sizeof(int));
-        ins->len_obj = (int*)malloc(sizeof(int));
+    *(ins->len_attr) = 0;
+    *(ins->len_obj) = 0;
 
-        *(ins->len_attr) = 0;
-        *(ins->len_obj) = 0;
+    ins->node_attr = new_attr(0, 0, ins->len_attr);
+    ins->node_obj = new_obj(0, 0, ins->len_obj);
 
-        ins->node_attr = new_attr(0, 0, ins->len_attr);
-        ins->node_obj = new_obj(0, 0, ins->len_obj, ins->len_attr);
+    cur_attr = ins->node_attr;
+    cur_obj = ins->node_obj;
 
-        cur_attr = ins->node_attr;
-        cur_obj = ins->node_obj;
+    cond++;
 
-        cond++;
-
-        while(fgets(buf, MAX_BUF, fp)) {
-            if(0 < strlen(buf))
-                buf[strlen(buf) - 1] = '\0';
-
-            if(!strcmp(buf, "#")) {
-                cond++;
-                continue;
-            }
-
-            if(cond == 1) {
-                cur_attr = new_attr(cur_attr, buf, ins->len_attr);
-            }
-            if(cond == 2) {
-                cur_obj = new_obj(cur_obj, buf, ins->len_obj, ins->len_attr);
-            }
+    while(fgets(buf, MAX_BUF, fp)) {
+       if(0 < strlen(buf))
+            buf[strlen(buf) - 1] = '\0';
+        if(!strcmp(buf, "#")) {
+            cond++;
+            continue;
         }
-        t = ins;
-        return t;
+
+        if(cond == 1) {
+            cur_attr = new_attr(cur_attr, buf, ins->len_attr);
+        }
+
+        if(cond == 2) {
+            cur_obj = new_obj(cur_obj, buf, ins->len_obj);
+        }
     }
-
     free(buf);
-    fclose(fp);
-
-    return 0;
+    
+    t = ins;
+    return ins;
+    
 }
 
-int del_dtree(d_tree* t) {
+int del_dtree(dtree* t) {
     del_attr(t->node_attr);
     del_obj(t->node_obj);
 
@@ -602,18 +667,11 @@ int del_dtree(d_tree* t) {
     return 0;
 }
 
-// ======== main ========
-
-int main() {
-    char filename[] = "./train.dat";
-    d_tree* dtr;
-    
-    printf("file name : %s\n", filename);
-
-    dtr = new_dtree(dtr, filename);
-    // object traversal
-
- //   del_dtree(tree);
-
-    return 0;
+void dbg_dtree(dtree* t) {
+    printf("## dtree@%p\n", t);
+    printf("   > node_attr = %p\n", t->node_attr);
+    dbg_attr(t->node_attr);
+    printf("   > node_obj = %p\n", t->node_obj);
+    dbg_obj(t->node_obj);
 }
+

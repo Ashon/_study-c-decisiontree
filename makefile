@@ -6,25 +6,30 @@
 CC = gcc
 
 # files
-SRC = main.c
+SRC_PATH = ./src
 OBJ_PATH = ./obj
-OBJ = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
+
+# all of c files in ./src/
+SRCS = $(wildcard $(SRC_PATH)/*.c)
+OBJS = $(addprefix $(OBJ_PATH)/, $(notdir $(SRCS:.c=.o)))
+
 TARGET = main
 
 ## make procedures
 # generate exacute file
-$(TARGET) : $(OBJ)
-	@echo "# make : generate execute file"
-	$(CC) -o $@ $(OBJ)
+
+$(TARGET) : $(OBJ_PATH) $(OBJS)
+	@echo "# make : generate execute file : OBJS - $(OBJS)"
+	$(CC) -o $@ $(OBJS)
 
 # generate object file
-$(OBJ) : $(OBJ_PATH) $(SRC)
-	@echo "# make : generate obj file"
-	$(CC) -c $(SRC) -o $(OBJ)
+$(OBJS) : $(SRCS)
+	@echo "# make : generate obj file : SRCS - $(SRCS)"
+	$(CC) -c $(addprefix $(SRC_PATH)/, $(notdir $(@:.o=.c))) -o $@
 
 # make directory
-$(OBJ_PATH) : $(SRC)
-	@echo "# make : make obj directory"
+$(OBJ_PATH) : $(SRCS)
+	@echo "# make : make obj directory : OBJ_PATH - $(OBJ_PATH)"
 	mkdir -p $@
 
 # clean
