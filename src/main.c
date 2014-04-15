@@ -11,9 +11,10 @@
  */
 
 #include <stdio.h>
+#include "dtree.h"
 
 int main() {
-    char fname[] = "../dat/train.dat";
+    char fname[] = "./dat/train.dat";
     dtree* t;
     FILE* fp;
     
@@ -23,7 +24,7 @@ int main() {
         dbg_attr(t->node_attr);
         dbg_obj(t->node_obj);
         del_dtree(t);
+        fclose(fp);
     }
-    fclose(fp);
     return 0;
 }
