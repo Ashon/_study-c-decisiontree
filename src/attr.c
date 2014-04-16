@@ -14,19 +14,19 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "attr.h"
+#include "adt_dtree.h"
 
 /**
  * new_attr(attr*, char*, int*)
  *
  * @description
- *    makes a new attr ins link of *a.
+ *    makes a new attr instance link of *a.
  * 
  * @param
  *    a - attr pointer to attach a new node.
  *
  *    str - string
- *       formed string such as "[ATTR_NAME]{[NODE_NAME],[NODE_NAME], .. }"
+ *       formed string such as "[attr]{[node],[node], .. }"
  *       [ATTR_NAME] - attribute's name
  *       [NODE_NAME] - node(class)'s name of attribute.
  *

@@ -14,22 +14,18 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "obj.h"
-
-// ======== Implementation of ADT ========
+#include "adt_dtree.h"
 
 /**
  * new_obj(obj*, char*, int*)
  *
  * @description
- *    makes a new obj ins link of o.
+ *    makes a new obj instance link of o.
  *
  * @param
  *    o - target obj
  *    str - formed string such as "1,2,3,4"
  *    len_obj - # of object (indirect)
- *    len_prop - # of property (indirect)
- *               equals # of attribute.
  *
  * @return
  *    obj* - new obj instance's pointer.
@@ -104,8 +100,11 @@ int del_obj(obj* head) {
         q = p;
         p = p->link;
         // todo for free q.
-        if(q->node_prop)
+        if(q->node_prop){
             del_prop(q->node_prop);
+            free(q->len_prop);
+        }
+        
         free(q);
     } while(p);
 

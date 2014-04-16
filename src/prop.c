@@ -14,12 +14,22 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "prop.h"
-
-// ======== Implementation of ADT ========
+#include "adt_dtree.h"
 
 /**
- * new_prop
+ * new_prop(prop*, int*, int*)
+ *
+ * @description
+ *    makes a new prop instance link of p.
+ *
+ * @param
+ *    p - target prop
+ *    val - integer value
+ *    len_prop - # of property (indirect)
+ *               equals # of attribute.
+ *
+ * @return
+ *    prop* - new prop instance's pointer.
  */
 prop* new_prop(prop* p, int* val, int* len_prop) {
     prop* ins = (prop*)malloc(sizeof(prop));
@@ -39,6 +49,18 @@ prop* new_prop(prop* p, int* val, int* len_prop) {
     return ins;
 }
 
+/**
+ * len_prop(prop*)
+ *
+ * @descriptinon
+ *    returns # of prop's node.
+ *
+ * @param
+ *    p - prop
+ *
+ * @return
+ *    int - # of prop node
+ */
 int len_prop(prop* p) {
     return *(p->len_prop);
 }

@@ -11,6 +11,7 @@ OBJ_PATH = ./obj
 
 # all of c files in ./src/
 SRCS = $(wildcard $(SRC_PATH)/*.c)
+#HDRS = $(SRCS:.c=.h)
 OBJS = $(addprefix $(OBJ_PATH)/, $(notdir $(SRCS:.c=.o)))
 
 TARGET = main

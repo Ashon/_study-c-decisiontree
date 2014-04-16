@@ -1,6 +1,7 @@
 /**
  * Decision Tree Genarator v0.1
  *
+ * 
  * dtree.c
  *
  * @author juwon.lee
@@ -14,7 +15,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "dtree.h"
+#include "adt_dtree.h"
 
 /**
  * ADTs for decision tree generator.

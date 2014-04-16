@@ -11,14 +11,18 @@
  */
 
 #include <stdio.h>
-#include "dtree.h"
+
+#include "adt_dtree.h"
 
 int main() {
+
     char fname[] = "./dat/train.dat";
+
     dtree* t;
     FILE* fp;
     
     fp = fopen(fname, "r");
+
     if(fp) {
         t = new_dtree(t, fp);
         dbg_attr(t->node_attr);
@@ -26,5 +30,6 @@ int main() {
         del_dtree(t);
         fclose(fp);
     }
+
     return 0;
 }

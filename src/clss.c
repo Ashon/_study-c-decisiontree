@@ -14,15 +14,13 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "clss.h"
-
-// ======== Implementation of ADT ========
+#include "adt_dtree.h"
 
 /**
  * new_clss(clss*, char*, int*)
  *
  * @description
- *    makes a new clss ins link of *clss.
+ *    makes a new clss instance link of *clss.
  *
  * @param
  *    c - clss pointer to attach a new clss
@@ -42,9 +40,10 @@ clss* new_clss(clss* c, char* str, int* len_clss) {
     if(str) {
         ins->name = (char*)calloc(strlen(str) + 1, sizeof(char));
         strcpy(ins->name, str);
-
     } else
         ins->name = 0;
+
+    ins->lnode_obj = 0;
 
     if(c)
         c->link = ins;
@@ -90,6 +89,9 @@ int del_clss(clss* head) {
     do {
         q = p;
         p = p->link;
+
+        if(q->lnode_obj)
+            free(q->lnode_obj);
         if(q->name)
             free(q->name);
 
