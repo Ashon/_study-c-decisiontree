@@ -37,10 +37,15 @@ prop* new_prop(prop* p, int* val, int* len_prop) {
     *(ins->len_prop) = *(ins->len_prop) + 1;
 
     if(val) {
+        ins->tag = (int*)malloc(sizeof(int));
+        *(ins->tag) = 0;
+
         ins->val = (int*)malloc(sizeof(int));
         *(ins->val) = *(val);
-    } else
+    } else {
         ins->val = 0;
+        ins->tag = 0;
+    }
 
     if(p)
         p->link = ins;
@@ -53,7 +58,7 @@ prop* new_prop(prop* p, int* val, int* len_prop) {
  * len_prop(prop*)
  *
  * @descriptinon
- *    returns # of prop's node.
+ *    returns # of prop node. (include empty head node)
  *
  * @param
  *    p - prop
@@ -63,6 +68,22 @@ prop* new_prop(prop* p, int* val, int* len_prop) {
  */
 int len_prop(prop* p) {
     return *(p->len_prop);
+}
+
+/**
+ * n_prop(prop*)
+ *
+ * @description
+ *    returns # of valid prop node.
+ *
+ * @param
+ *    p - prop*
+ *
+ * @return
+ *    int - # of valid prop node.
+ */
+int n_prop(prop* p) {
+    return *(p->len_prop) - 1;
 }
 
 int get_prop(prop* p) {
@@ -75,8 +96,16 @@ int del_prop(prop* head) {
     do {
         q = p;
         p = p->link;
-        if(q->val);
+
+        if(q->val)
             free(q->val);
+
+        if(q->tag)
+            if(0 < *(q->tag))
+                *(q->tag) = *(q->tag) - 1;
+            else
+                free(q->tag);
+
         free(q);
     } while(p);
     return 0;
@@ -97,8 +126,7 @@ void dbg_prop(prop* head) {
             if(cur->val)
                 printf("\n        > val = %d\n", *(cur->val));
             else
-                printf(" [HEAD - len:%d]\n", len_prop(cur));
+                printf(" [HEAD - size:%d]\n", n_prop(cur));
         }
     }
 }
-

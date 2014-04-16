@@ -25,8 +25,10 @@ int main() {
 
     if(fp) {
         t = new_dtree(t, fp);
+        
         dbg_attr(t->node_attr);
-        dbg_obj(t->node_obj);
+        //dbg_obj(t->node_obj);
+        
         del_dtree(t);
         fclose(fp);
     }

@@ -17,53 +17,6 @@
 
 #include "adt_dtree.h"
 
-/**
- * ADTs for decision tree generator.
- *
- * @dependency
- *  +-> dtree : decision tree
- *    |
- *    +---> int* len_attr : length of attribute node (direct)
- *    +---> int* len_obj : length of object node (direct)
- *    |
- *    +---> attr* node_attr : [single list]
- *    |   |
- *    |   +---> int* len_attr : points to [dtree->len_attr] (indirect)
- *    |   +---> char* name : attribute name
- *    |   +---> int* type : attribte type
- *    |   +---> int* len_clss : length of attribute's class.
- *    |   | 
- *    |   +---> clss* node_clss : [single list]
- *    |   |   |
- *    |   |   +---> int* len_clss : points to [attr->len_clss] (indirect)
- *    |   |   +---> char* name : class name
- *    |   |   |
- *    |   |   +---> clss* link : next clss node.
- *    |   |
- *    |   +-> *link : next attr node.
- *    |
- *    +---> obj* node_obj : [single list]
- *        |
- *        +---> int* len_obj : points to [dtree->len_obj] (indirect)
- *        +---> int* len_prop : # of property (direct)
- *        |
- *        +---> prop* node_prop : [single list]
- *        |   |
- *        |   +---> int* len_prop : points to [obj->len_prop] (indirect)
- *        |   +---> int* val : property value.
- *        |   |
- *        |   +---> prop* link : next prop node.
- *        |
- *        +---> obj* link : next obj node.
- *
- * @constraint
- *    - # of obj's property equals to # of attr:
- *    - all of [single list]s have empty head node.
- *        [HEAD] -> [node] -> ... -> 0
- */
-
-// ======== Implementation of ADT ========
-
 dtree* new_dtree(dtree* t, FILE* fp) {
     char *buf = (char*)calloc(MAX_BUF, sizeof(char));
     int cond = -1;
@@ -96,11 +49,11 @@ dtree* new_dtree(dtree* t, FILE* fp) {
         }
 
         if(cond == 1) {
-            cur_attr = new_attr(cur_attr, buf, ins->len_attr);
+            cur_attr = add_attr(ins, cur_attr, buf);
         }
 
         if(cond == 2) {
-            cur_obj = new_obj(cur_obj, buf, ins->len_obj);
+            cur_obj = add_obj(ins, cur_obj, buf);
         }
     }
     free(buf);
@@ -108,6 +61,50 @@ dtree* new_dtree(dtree* t, FILE* fp) {
     t = ins;
     return ins;
     
+}
+
+attr* add_attr(dtree* t, attr* cur_attr, char* buf) {
+    cur_attr = new_attr(cur_attr, buf, t->len_attr);
+
+    return cur_attr;
+}
+
+obj* add_obj(dtree* t, obj* cur_obj, char* buf) {
+    // t's cursor
+    attr* cur_attr;
+    clss* cur_clss;
+    lobj* cur_lobj;
+
+    // cur_obj's prop cursor
+    prop* cur_prop;
+
+    cur_obj = new_obj(cur_obj, buf, t->len_obj);
+    cur_prop = cur_obj->node_prop->link;
+    int idx;
+    int count = 0;
+
+    cur_attr = t->node_attr;
+    
+    for(; cur_attr; cur_attr = cur_attr->link) {
+        if(cur_attr->node_clss) {
+            cur_clss = cur_attr->node_clss->link;
+            idx = 0;
+            for(; cur_clss; cur_clss = cur_clss->link) {
+                cur_lobj = cur_clss->node_lobj;
+
+                while(cur_lobj->link)
+                    cur_lobj = cur_lobj->link;
+
+                if(idx == *(cur_prop->val)) {
+                    cur_lobj = new_lobj(cur_lobj, cur_obj, cur_clss->len_lobj);
+                    break;
+                }
+                idx++;
+            }
+            cur_prop = cur_prop->link;
+        }
+    }
+    return cur_obj;
 }
 
 int del_dtree(dtree* t) {
@@ -128,4 +125,3 @@ void dbg_dtree(dtree* t) {
     printf("   > node_obj = %p\n", t->node_obj);
     dbg_obj(t->node_obj);
 }
-

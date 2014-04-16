@@ -81,7 +81,7 @@ attr* new_attr(attr* a, char* str, int* len_attr) {
 
         if(*(ins->type) == -1)
             if(2 < *(ins->len_clss))
-                *(ins->type) = AT_TYPE_CATEGORICAL;
+                *(ins->type) = AT_TYPE_MULTIPLE;
             else
                 *(ins->type) = AT_TYPE_BINARY;
 
@@ -102,16 +102,32 @@ attr* new_attr(attr* a, char* str, int* len_attr) {
  * len_attr(attr*)
  *
  * @description
- *    returns # of attr.
+ *    returns # of attr. (include head node)
  *
  * @param
- *    a - attr
+ *    a - attr*
  *
  * @return
  *    int - # of attr nodes.
  */
 int len_attr(attr* a) {
     return *(a->len_attr);
+}
+
+/**
+ * n_attr(attr*)
+ *
+ * @description
+ *    returns # of valid attr.
+ *
+ * @param
+ *    a - attr*
+ *
+ * @return
+ *    int - # of valid attr node.
+ */
+int n_attr(attr* a) {
+    return *(a->len_attr) - 1;
 }
 
 /**
@@ -164,7 +180,7 @@ void dbg_attr(attr* head) {
             if(cur->name)
                 printf("\n   > name = %s\n", cur->name);
             else
-                printf(" [HEAD - len:%d]\n", *(cur->len_attr));
+                printf(" [HEAD - size:%d]\n", n_attr(cur));
     
             if(cur->type) {
                 printf("   > type = %d",*(cur->type));
@@ -176,7 +192,7 @@ void dbg_attr(attr* head) {
                         printf(" [T_BINARY]\n");
                     break;
                     case 2 :
-                        printf(" [T_CATEGORICAL]\n");
+                        printf(" [T_MULTIPLE]\n");
                     break;
                     case 3 :
                         printf(" [T_CONTINUOUS]\n");

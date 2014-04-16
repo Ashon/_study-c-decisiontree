@@ -43,7 +43,10 @@ clss* new_clss(clss* c, char* str, int* len_clss) {
     } else
         ins->name = 0;
 
-    ins->lnode_obj = 0;
+    ins->len_lobj = (int*)malloc(sizeof(int));
+    *(ins->len_lobj) = 0;
+
+    ins->node_lobj = new_lobj(0, 0, ins->len_lobj);
 
     if(c)
         c->link = ins;
@@ -69,6 +72,22 @@ int len_clss(clss* c) {
 }
 
 /**
+ * n_clss(clss*)
+ *
+ * @description
+ *    returns # of valid clss node.
+ *
+ * @param
+ *    c - clss*
+ *
+ * @return
+ *    int - # of valid clss node.
+ */
+int n_clss(clss * c) {
+    return *(c->len_clss) - 1;
+}
+
+/**
  * del_clss(clss*)
  *
  * @description
@@ -90,11 +109,13 @@ int del_clss(clss* head) {
         q = p;
         p = p->link;
 
-        if(q->lnode_obj)
-            free(q->lnode_obj);
+        if(q->node_lobj)
+            del_lobj(q->node_lobj);
+
         if(q->name)
             free(q->name);
 
+        free(q->len_lobj);
         free(q);
     } while(p);
 
@@ -112,11 +133,12 @@ void dbg_clss(clss* head) {
                 printf(" -> %p", cur->link);
             else
                 printf(" [TAIL]");
-            if(cur->name)
+            if(cur->name && cur->node_lobj) {
                 printf("\n        > name = %s\n", cur->name);
-            else
-                printf(" [HEAD - len:%d]\n", len_clss(cur));
+                printf("        > lobj = %p\n", cur->node_lobj);
+                dbg_lobj(cur->node_lobj);
+            } else
+                printf(" [HEAD - size:%d]\n", n_clss(cur));
         }
     }
 }
-

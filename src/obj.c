@@ -64,11 +64,24 @@ obj* new_obj(obj* o, char* str, int* len_obj) {
     return ins;
 }
 
+prop* obj_prop(obj* o, int idx) {
+    int i;
+    prop* cur;
+
+    if(-1 < idx && idx < len_prop(o->node_prop)) {
+        cur = o->node_prop;
+        for(i = 0; i < idx; idx++)
+            cur = cur->link;
+        return cur;
+    }
+
+    return 0;
+}
 /**
  * len_o(obj*)
  *
  * @description
- *    returns # of obj
+ *    returns # of obj. (include empty head node)
  *
  * @param
  *    o - obj
@@ -78,6 +91,22 @@ obj* new_obj(obj* o, char* str, int* len_obj) {
  */
 int len_obj(obj* o) {
     return *(o->len_obj);
+}
+
+/**
+ * n_obj(obj*)
+ *
+ * @description
+ *    returns # of valid obj node.
+ *
+ * @param
+ *    o - obj*
+ *
+ * @return
+ *    int - # of valid obj node.
+ */
+int n_obj(obj* o) {
+    return *(o->len_obj) - 1;
 }
 
 /**
@@ -134,7 +163,7 @@ void dbg_obj(obj* head) {
                 printf("   > node_prop = %p\n", cur->node_prop);
                 dbg_prop(cur->node_prop);
             } else
-                printf(" [HEAD - len:%d]\n", *(cur->len_obj)); 
+                printf(" [HEAD - size:%d]\n", n_obj(cur)); 
         }
     }
 }
