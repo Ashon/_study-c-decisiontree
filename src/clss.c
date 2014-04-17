@@ -135,7 +135,7 @@ void dbg_clss(clss* head) {
                 printf(" [TAIL]");
             if(cur->name && cur->node_lobj) {
                 printf("\n        > name = %s\n", cur->name);
-                printf("        > lobj = %p\n", cur->node_lobj);
+                printf("        > node_lobj = %p\n", cur->node_lobj);
                 dbg_lobj(cur->node_lobj);
             } else
                 printf(" [HEAD - size:%d]\n", n_clss(cur));

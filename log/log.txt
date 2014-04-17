@@ -1,0 +1,223 @@
+## dtree@0x1380360
+   > node_attr = 0x13803d0
+## attr@0x13803d0 -> 0x1380440 [HEAD - size:4]
+## attr@0x1380440 -> 0x1380680
+   > name = Home_Owner
+   > type = 2 [T_MULTIPLE]
+   > node_clss = 0x13804c0
+     ## clss@0x13804c0 -> 0x1380530 [HEAD - size:2]
+     ## clss@0x1380530 -> 0x13805f0
+        > name = Yes
+        > node_lobj = 0x13805d0
+          ## lobj@0x13805d0 -> 0x1380ed0 [HEAD - size:3]
+          ## lobj@0x1380ed0 -> 0x13816b0
+             > *obj = 0x1380c90
+          ## lobj@0x13816b0 -> 0x1381e90
+             > *obj = 0x1381470
+          ## lobj@0x1381e90 [TAIL]
+             > *obj = 0x1381c50
+     ## clss@0x13805f0 [TAIL]
+        > name = No
+        > node_lobj = 0x1380660
+          ## lobj@0x1380660 -> 0x1381170 [HEAD - size:7]
+          ## lobj@0x1381170 -> 0x1381410
+             > *obj = 0x1380f30
+          ## lobj@0x1381410 -> 0x1381950
+             > *obj = 0x13811d0
+          ## lobj@0x1381950 -> 0x1381bf0
+             > *obj = 0x1381710
+          ## lobj@0x1381bf0 -> 0x1382130
+             > *obj = 0x13819b0
+          ## lobj@0x1382130 -> 0x13823d0
+             > *obj = 0x1381ef0
+          ## lobj@0x13823d0 -> 0x1382670
+             > *obj = 0x1382190
+          ## lobj@0x1382670 [TAIL]
+             > *obj = 0x1382430
+## attr@0x1380680 -> 0x1380950
+   > name = Marital_Status
+   > type = 2 [T_MULTIPLE]
+   > node_clss = 0x1380700
+     ## clss@0x1380700 -> 0x1380770 [HEAD - size:3]
+     ## clss@0x1380770 -> 0x1380830
+        > name = Single
+        > node_lobj = 0x1380810
+          ## lobj@0x1380810 -> 0x1380ef0 [HEAD - size:4]
+          ## lobj@0x1380ef0 -> 0x1381430
+             > *obj = 0x1380c90
+          ## lobj@0x1381430 -> 0x1382150
+             > *obj = 0x13811d0
+          ## lobj@0x1382150 -> 0x1382690
+             > *obj = 0x1381ef0
+          ## lobj@0x1382690 [TAIL]
+             > *obj = 0x1382430
+     ## clss@0x1380830 -> 0x13808c0
+        > name = Married
+        > node_lobj = 0x13808a0
+          ## lobj@0x13808a0 -> 0x1381190 [HEAD - size:4]
+          ## lobj@0x1381190 -> 0x13816d0
+             > *obj = 0x1380f30
+          ## lobj@0x13816d0 -> 0x1381c10
+             > *obj = 0x1381470
+          ## lobj@0x1381c10 -> 0x13823f0
+             > *obj = 0x13819b0
+          ## lobj@0x13823f0 [TAIL]
+             > *obj = 0x1382190
+     ## clss@0x13808c0 [TAIL]
+        > name = Divorced
+        > node_lobj = 0x1380930
+          ## lobj@0x1380930 -> 0x1381970 [HEAD - size:2]
+          ## lobj@0x1381970 -> 0x1381eb0
+             > *obj = 0x1381710
+          ## lobj@0x1381eb0 [TAIL]
+             > *obj = 0x1381c50
+## attr@0x1380950 -> 0x1380a40
+   > name = Annual_Income
+   > type = 3 [T_CONTINUOUS]
+   > node_clss = 0x13809d0
+     ## clss@0x13809d0 [BLANK]
+## attr@0x1380a40 [TAIL]
+   > name = Defaulted_Borrower
+   > type = 0 [T_CLASS]
+   > node_clss = 0x1380b00
+     ## clss@0x1380b00 -> 0x1380b70 [HEAD - size:2]
+     ## clss@0x1380b70 -> 0x1380c00
+        > name = Yes
+        > node_lobj = 0x1380be0
+          ## lobj@0x1380be0 -> 0x1381990 [HEAD - size:3]
+          ## lobj@0x1381990 -> 0x1382170
+             > *obj = 0x1381710
+          ## lobj@0x1382170 -> 0x13826b0
+             > *obj = 0x1381ef0
+          ## lobj@0x13826b0 [TAIL]
+             > *obj = 0x1382430
+     ## clss@0x1380c00 [TAIL]
+        > name = No
+        > node_lobj = 0x1380c70
+          ## lobj@0x1380c70 -> 0x1380f10 [HEAD - size:7]
+          ## lobj@0x1380f10 -> 0x13811b0
+             > *obj = 0x1380c90
+          ## lobj@0x13811b0 -> 0x1381450
+             > *obj = 0x1380f30
+          ## lobj@0x1381450 -> 0x13816f0
+             > *obj = 0x13811d0
+          ## lobj@0x13816f0 -> 0x1381c30
+             > *obj = 0x1381470
+          ## lobj@0x1381c30 -> 0x1381ed0
+             > *obj = 0x13819b0
+          ## lobj@0x1381ed0 -> 0x1382410
+             > *obj = 0x1381c50
+          ## lobj@0x1382410 [TAIL]
+             > *obj = 0x1382190
+   > node_obj = 0x1380410
+## obj@0x1380410 -> 0x1380c90 [HEAD - size:10]
+## obj@0x1380c90 -> 0x1380f30
+   > node_prop = 0x1380ce0
+     ## prop@0x1380ce0 -> 0x1380d10 [HEAD - size:4]
+     ## prop@0x1380d10 -> 0x1380d80
+        > val = 0
+     ## prop@0x1380d80 -> 0x1380df0
+        > val = 0
+     ## prop@0x1380df0 -> 0x1380e60
+        > val = 125
+     ## prop@0x1380e60 [TAIL]
+        > val = 1
+## obj@0x1380f30 -> 0x13811d0
+   > node_prop = 0x1380f80
+     ## prop@0x1380f80 -> 0x1380fb0 [HEAD - size:4]
+     ## prop@0x1380fb0 -> 0x1381020
+        > val = 1
+     ## prop@0x1381020 -> 0x1381090
+        > val = 1
+     ## prop@0x1381090 -> 0x1381100
+        > val = 100
+     ## prop@0x1381100 [TAIL]
+        > val = 1
+## obj@0x13811d0 -> 0x1381470
+   > node_prop = 0x1381220
+     ## prop@0x1381220 -> 0x1381250 [HEAD - size:4]
+     ## prop@0x1381250 -> 0x13812c0
+        > val = 1
+     ## prop@0x13812c0 -> 0x1381330
+        > val = 0
+     ## prop@0x1381330 -> 0x13813a0
+        > val = 70
+     ## prop@0x13813a0 [TAIL]
+        > val = 1
+## obj@0x1381470 -> 0x1381710
+   > node_prop = 0x13814c0
+     ## prop@0x13814c0 -> 0x13814f0 [HEAD - size:4]
+     ## prop@0x13814f0 -> 0x1381560
+        > val = 0
+     ## prop@0x1381560 -> 0x13815d0
+        > val = 1
+     ## prop@0x13815d0 -> 0x1381640
+        > val = 120
+     ## prop@0x1381640 [TAIL]
+        > val = 1
+## obj@0x1381710 -> 0x13819b0
+   > node_prop = 0x1381760
+     ## prop@0x1381760 -> 0x1381790 [HEAD - size:4]
+     ## prop@0x1381790 -> 0x1381800
+        > val = 1
+     ## prop@0x1381800 -> 0x1381870
+        > val = 2
+     ## prop@0x1381870 -> 0x13818e0
+        > val = 95
+     ## prop@0x13818e0 [TAIL]
+        > val = 0
+## obj@0x13819b0 -> 0x1381c50
+   > node_prop = 0x1381a00
+     ## prop@0x1381a00 -> 0x1381a30 [HEAD - size:4]
+     ## prop@0x1381a30 -> 0x1381aa0
+        > val = 1
+     ## prop@0x1381aa0 -> 0x1381b10
+        > val = 1
+     ## prop@0x1381b10 -> 0x1381b80
+        > val = 60
+     ## prop@0x1381b80 [TAIL]
+        > val = 1
+## obj@0x1381c50 -> 0x1381ef0
+   > node_prop = 0x1381ca0
+     ## prop@0x1381ca0 -> 0x1381cd0 [HEAD - size:4]
+     ## prop@0x1381cd0 -> 0x1381d40
+        > val = 0
+     ## prop@0x1381d40 -> 0x1381db0
+        > val = 2
+     ## prop@0x1381db0 -> 0x1381e20
+        > val = 220
+     ## prop@0x1381e20 [TAIL]
+        > val = 1
+## obj@0x1381ef0 -> 0x1382190
+   > node_prop = 0x1381f40
+     ## prop@0x1381f40 -> 0x1381f70 [HEAD - size:4]
+     ## prop@0x1381f70 -> 0x1381fe0
+        > val = 1
+     ## prop@0x1381fe0 -> 0x1382050
+        > val = 0
+     ## prop@0x1382050 -> 0x13820c0
+        > val = 85
+     ## prop@0x13820c0 [TAIL]
+        > val = 0
+## obj@0x1382190 -> 0x1382430
+   > node_prop = 0x13821e0
+     ## prop@0x13821e0 -> 0x1382210 [HEAD - size:4]
+     ## prop@0x1382210 -> 0x1382280
+        > val = 1
+     ## prop@0x1382280 -> 0x13822f0
+        > val = 1
+     ## prop@0x13822f0 -> 0x1382360
+        > val = 75
+     ## prop@0x1382360 [TAIL]
+        > val = 1
+## obj@0x1382430 [TAIL]
+   > node_prop = 0x1382480
+     ## prop@0x1382480 -> 0x13824b0 [HEAD - size:4]
+     ## prop@0x13824b0 -> 0x1382520
+        > val = 1
+     ## prop@0x1382520 -> 0x1382590
+        > val = 0
+     ## prop@0x1382590 -> 0x1382600
+        > val = 90
+     ## prop@0x1382600 [TAIL]
+        > val = 0

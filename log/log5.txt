@@ -1,0 +1,334 @@
+Yes -- Yes : 
+not matched.
+not matched.
+not matched.
+          ## lobj@0x1621310 [BLANK]
+Yes -- No : 
+not matched.
+not matched.
+matched          ## lobj@0x16236f0 -> 0x1623710 [HEAD - size:1]
+          ## lobj@0x1623710 [TAIL]
+             > *obj = 0x1623430
+No -- Yes : 
+not matched.
+not matched.
+not matched.
+not matched.
+not matched.
+matchednot matched.
+          ## lobj@0x1623770 -> 0x1623790 [HEAD - size:1]
+          ## lobj@0x1623790 [TAIL]
+             > *obj = 0x1622c50
+No -- No : 
+not matched.
+not matched.
+not matched.
+not matched.
+not matched.
+not matched.
+not matched.
+          ## lobj@0x16237f0 [BLANK]
+Yes -- Single : 
+not matched.
+not matched.
+matched          ## lobj@0x16238a0 -> 0x16238c0 [HEAD - size:1]
+          ## lobj@0x16238c0 [TAIL]
+             > *obj = 0x1623430
+Yes -- Married : 
+not matched.
+not matched.
+not matched.
+          ## lobj@0x1623920 [BLANK]
+Yes -- Divorced : 
+not matched.
+not matched.
+not matched.
+          ## lobj@0x1623980 [BLANK]
+No -- Single : 
+not matched.
+not matched.
+not matched.
+not matched.
+not matched.
+not matched.
+not matched.
+          ## lobj@0x16239e0 [BLANK]
+No -- Married : 
+not matched.
+not matched.
+not matched.
+not matched.
+not matched.
+not matched.
+matched          ## lobj@0x1623a40 -> 0x1623a60 [HEAD - size:1]
+          ## lobj@0x1623a60 [TAIL]
+             > *obj = 0x1623190
+No -- Divorced : 
+not matched.
+not matched.
+not matched.
+not matched.
+not matched.
+matchednot matched.
+          ## lobj@0x1623ac0 -> 0x1623ae0 [HEAD - size:1]
+          ## lobj@0x1623ae0 [TAIL]
+             > *obj = 0x1622c50
+## dtree@0x1621360
+   > node_attr = 0x16213d0
+## attr@0x16213d0 -> 0x1621440 [HEAD - size:4]
+## attr@0x1621440 -> 0x1621680
+   > name = Home_Owner
+   > type = 2 [T_MULTIPLE]
+   > node_clss = 0x16214c0
+     ## clss@0x16214c0 -> 0x1621530 [HEAD - size:2]
+     ## clss@0x1621530 -> 0x16215f0
+        > name = Yes
+        > node_lobj = 0x16215d0
+          ## lobj@0x16215d0 -> 0x1621ed0 [HEAD - size:3]
+          ## lobj@0x1621ed0 -> 0x16226b0
+             > *obj = 0x1621c90
+          ## lobj@0x16226b0 -> 0x1622e90
+             > *obj = 0x1622470
+          ## lobj@0x1622e90 [TAIL]
+             > *obj = 0x1622c50
+     ## clss@0x16215f0 [TAIL]
+        > name = No
+        > node_lobj = 0x1621660
+          ## lobj@0x1621660 -> 0x1622170 [HEAD - size:7]
+          ## lobj@0x1622170 -> 0x1622410
+             > *obj = 0x1621f30
+          ## lobj@0x1622410 -> 0x1622950
+             > *obj = 0x16221d0
+          ## lobj@0x1622950 -> 0x1622bf0
+             > *obj = 0x1622710
+          ## lobj@0x1622bf0 -> 0x1623130
+             > *obj = 0x16229b0
+          ## lobj@0x1623130 -> 0x16233d0
+             > *obj = 0x1622ef0
+          ## lobj@0x16233d0 -> 0x1623670
+             > *obj = 0x1623190
+          ## lobj@0x1623670 [TAIL]
+             > *obj = 0x1623430
+## attr@0x1621680 -> 0x1621950
+   > name = Marital_Status
+   > type = 2 [T_MULTIPLE]
+   > node_clss = 0x1621700
+     ## clss@0x1621700 -> 0x1621770 [HEAD - size:3]
+     ## clss@0x1621770 -> 0x1621830
+        > name = Single
+        > node_lobj = 0x1621810
+          ## lobj@0x1621810 -> 0x1621ef0 [HEAD - size:4]
+          ## lobj@0x1621ef0 -> 0x1622430
+             > *obj = 0x1621c90
+          ## lobj@0x1622430 -> 0x1623150
+             > *obj = 0x16221d0
+          ## lobj@0x1623150 -> 0x1623690
+             > *obj = 0x1622ef0
+          ## lobj@0x1623690 [TAIL]
+             > *obj = 0x1623430
+     ## clss@0x1621830 -> 0x16218c0
+        > name = Married
+        > node_lobj = 0x16218a0
+          ## lobj@0x16218a0 -> 0x1622190 [HEAD - size:4]
+          ## lobj@0x1622190 -> 0x16226d0
+             > *obj = 0x1621f30
+          ## lobj@0x16226d0 -> 0x1622c10
+             > *obj = 0x1622470
+          ## lobj@0x1622c10 -> 0x16233f0
+             > *obj = 0x16229b0
+          ## lobj@0x16233f0 [TAIL]
+             > *obj = 0x1623190
+     ## clss@0x16218c0 [TAIL]
+        > name = Divorced
+        > node_lobj = 0x1621930
+          ## lobj@0x1621930 -> 0x1622970 [HEAD - size:2]
+          ## lobj@0x1622970 -> 0x1622eb0
+             > *obj = 0x1622710
+          ## lobj@0x1622eb0 [TAIL]
+             > *obj = 0x1622c50
+## attr@0x1621950 -> 0x1621a40
+   > name = Annual_Income
+   > type = 3 [T_CONTINUOUS]
+   > node_clss = 0x16219d0
+     ## clss@0x16219d0 [BLANK]
+## attr@0x1621a40 [TAIL]
+   > name = Defaulted_Borrower
+   > type = 0 [T_CLASS]
+   > node_clss = 0x1621b00
+     ## clss@0x1621b00 -> 0x1621b70 [HEAD - size:2]
+     ## clss@0x1621b70 -> 0x1621c00
+        > name = Yes
+        > node_lobj = 0x1621be0
+          ## lobj@0x1621be0 -> 0x1622990 [HEAD - size:3]
+          ## lobj@0x1622990 -> 0x1623170
+             > *obj = 0x1622710
+          ## lobj@0x1623170 -> 0x16236b0
+             > *obj = 0x1622ef0
+          ## lobj@0x16236b0 [TAIL]
+             > *obj = 0x1623430
+     ## clss@0x1621c00 [TAIL]
+        > name = No
+        > node_lobj = 0x1621c70
+          ## lobj@0x1621c70 -> 0x1621f10 [HEAD - size:7]
+          ## lobj@0x1621f10 -> 0x16221b0
+             > *obj = 0x1621c90
+          ## lobj@0x16221b0 -> 0x1622450
+             > *obj = 0x1621f30
+          ## lobj@0x1622450 -> 0x16226f0
+             > *obj = 0x16221d0
+          ## lobj@0x16226f0 -> 0x1622c30
+             > *obj = 0x1622470
+          ## lobj@0x1622c30 -> 0x1622ed0
+             > *obj = 0x16229b0
+          ## lobj@0x1622ed0 -> 0x1623410
+             > *obj = 0x1622c50
+          ## lobj@0x1623410 [TAIL]
+             > *obj = 0x1623190
+   > node_obj = 0x1621410
+## obj@0x1621410 -> 0x1621c90 [HEAD - size:10]
+## obj@0x1621c90 -> 0x1621f30
+   > node_prop = 0x1621ce0
+     ## prop@0x1621ce0 -> 0x1621d10 [HEAD - size:4]
+     ## prop@0x1621d10 -> 0x1621d80
+        > val = 0
+     ## prop@0x1621d80 -> 0x1621df0
+        > val = 0
+     ## prop@0x1621df0 -> 0x1621e60
+        > val = 125
+     ## prop@0x1621e60 [TAIL]
+        > val = 1
+## obj@0x1621f30 -> 0x16221d0
+   > node_prop = 0x1621f80
+     ## prop@0x1621f80 -> 0x1621fb0 [HEAD - size:4]
+     ## prop@0x1621fb0 -> 0x1622020
+        > val = 1
+     ## prop@0x1622020 -> 0x1622090
+        > val = 1
+     ## prop@0x1622090 -> 0x1622100
+        > val = 100
+     ## prop@0x1622100 [TAIL]
+        > val = 1
+## obj@0x16221d0 -> 0x1622470
+   > node_prop = 0x1622220
+     ## prop@0x1622220 -> 0x1622250 [HEAD - size:4]
+     ## prop@0x1622250 -> 0x16222c0
+        > val = 1
+     ## prop@0x16222c0 -> 0x1622330
+        > val = 0
+     ## prop@0x1622330 -> 0x16223a0
+        > val = 70
+     ## prop@0x16223a0 [TAIL]
+        > val = 1
+## obj@0x1622470 -> 0x1622710
+   > node_prop = 0x16224c0
+     ## prop@0x16224c0 -> 0x16224f0 [HEAD - size:4]
+     ## prop@0x16224f0 -> 0x1622560
+        > val = 0
+     ## prop@0x1622560 -> 0x16225d0
+        > val = 1
+     ## prop@0x16225d0 -> 0x1622640
+        > val = 120
+     ## prop@0x1622640 [TAIL]
+        > val = 1
+## obj@0x1622710 -> 0x16229b0
+   > node_prop = 0x1622760
+     ## prop@0x1622760 -> 0x1622790 [HEAD - size:4]
+     ## prop@0x1622790 -> 0x1622800
+        > val = 1
+     ## prop@0x1622800 -> 0x1622870
+        > val = 2
+     ## prop@0x1622870 -> 0x16228e0
+        > val = 95
+     ## prop@0x16228e0 [TAIL]
+        > val = 0
+## obj@0x16229b0 -> 0x1622c50
+   > node_prop = 0x1622a00
+     ## prop@0x1622a00 -> 0x1622a30 [HEAD - size:4]
+     ## prop@0x1622a30 -> 0x1622aa0
+        > val = 1
+     ## prop@0x1622aa0 -> 0x1622b10
+        > val = 1
+     ## prop@0x1622b10 -> 0x1622b80
+        > val = 60
+     ## prop@0x1622b80 [TAIL]
+        > val = 1
+## obj@0x1622c50 -> 0x1622ef0
+   > node_prop = 0x1622ca0
+     ## prop@0x1622ca0 -> 0x1622cd0 [HEAD - size:4]
+     ## prop@0x1622cd0 -> 0x1622d40
+        > val = 0
+     ## prop@0x1622d40 -> 0x1622db0
+        > val = 2
+     ## prop@0x1622db0 -> 0x1622e20
+        > val = 220
+     ## prop@0x1622e20 [TAIL]
+        > val = 1
+## obj@0x1622ef0 -> 0x1623190
+   > node_prop = 0x1622f40
+     ## prop@0x1622f40 -> 0x1622f70 [HEAD - size:4]
+     ## prop@0x1622f70 -> 0x1622fe0
+        > val = 1
+     ## prop@0x1622fe0 -> 0x1623050
+        > val = 0
+     ## prop@0x1623050 -> 0x16230c0
+        > val = 85
+     ## prop@0x16230c0 [TAIL]
+        > val = 0
+## obj@0x1623190 -> 0x1623430
+   > node_prop = 0x16231e0
+     ## prop@0x16231e0 -> 0x1623210 [HEAD - size:4]
+     ## prop@0x1623210 -> 0x1623280
+        > val = 1
+     ## prop@0x1623280 -> 0x16232f0
+        > val = 1
+     ## prop@0x16232f0 -> 0x1623360
+        > val = 75
+     ## prop@0x1623360 [TAIL]
+        > val = 1
+## obj@0x1623430 [TAIL]
+   > node_prop = 0x1623480
+     ## prop@0x1623480 -> 0x16234b0 [HEAD - size:4]
+     ## prop@0x16234b0 -> 0x1623520
+        > val = 1
+     ## prop@0x1623520 -> 0x1623590
+        > val = 0
+     ## prop@0x1623590 -> 0x1623600
+        > val = 90
+     ## prop@0x1623600 [TAIL]
+        > val = 0
+## stbl@0x1621250
+## stbl@0x1621280
+  > attr_clss = 0x1621a40[ Defaulted_Borrower ]
+  > attr_node = 0x1621440[ Home_Owner ]
+  > node_scel = 0x16212b0
+    ## scel@0x16212b0
+    ## scel@0x16212d0
+        > value = 0
+    ## scel@0x1621330
+        > value = 1
+    ## scel@0x1623730
+        > value = 1
+    ## scel@0x16237b0
+        > value = 0
+## stbl@0x1623810
+  > attr_clss = 0x1621a40[ Defaulted_Borrower ]
+  > attr_node = 0x1621680[ Marital_Status ]
+  > node_scel = 0x1623840
+    ## scel@0x1623840
+    ## scel@0x1623860
+        > value = 1
+    ## scel@0x16238e0
+        > value = 0
+    ## scel@0x1623940
+        > value = 0
+    ## scel@0x16239a0
+        > value = 0
+    ## scel@0x1623a00
+        > value = 1
+    ## scel@0x1623a80
+        > value = 1
+## stbl@0x1623b00
+  > attr_clss = 0x1621a40[ Defaulted_Borrower ]
+  > attr_node = 0x1621950[ Annual_Income ]
+  > node_scel = 0x1623b30
+    ## scel@0x1623b30

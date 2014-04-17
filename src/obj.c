@@ -109,6 +109,12 @@ int n_obj(obj* o) {
     return *(o->len_obj) - 1;
 }
 
+obj* equal_obj(obj* oa, obj* ob) {
+    if(oa && ob && oa == ob)
+        return oa;
+    return 0;
+}
+
 /**
  * del_o
  * 
@@ -147,7 +153,6 @@ int del_obj(obj* head) {
  */
 void dbg_obj(obj* head) {
     obj* cur = head;
-    int i;
 
     for(; cur; cur = cur->link) {
         printf("## obj@%p", cur);
@@ -158,13 +163,11 @@ void dbg_obj(obj* head) {
                 printf(" -> %p", cur->link);
             else
                 printf(" [TAIL]");
-            printf("\n");
             if(cur->node_prop) {
-                printf("   > node_prop = %p\n", cur->node_prop);
+                printf("\n   > node_prop = %p\n", cur->node_prop);
                 dbg_prop(cur->node_prop);
             } else
                 printf(" [HEAD - size:%d]\n", n_obj(cur)); 
         }
     }
 }
-

@@ -1,0 +1,116 @@
+Yes -- Yes : 
+          ## lobj@0x1f78310 [BLANK]
+Yes -- No : 
+          ## lobj@0x1f7a6f0 -> 0x1f7a710 [HEAD - size:4]
+          ## lobj@0x1f7a710 -> 0x1f7a730
+             > *obj = 0x1f7a430
+          ## lobj@0x1f7a730 -> 0x1f7a750
+             > *obj = 0x1f7a430
+          ## lobj@0x1f7a750 -> 0x1f7a770
+             > *obj = 0x1f7a430
+          ## lobj@0x1f7a770 [TAIL]
+             > *obj = 0x1f7a430
+No -- Yes : 
+          ## lobj@0x1f7a7d0 -> 0x1f7a7f0 [HEAD - size:7]
+          ## lobj@0x1f7a7f0 -> 0x1f7a810
+             > *obj = 0x1f79c50
+          ## lobj@0x1f7a810 -> 0x1f7a830
+             > *obj = 0x1f79c50
+          ## lobj@0x1f7a830 -> 0x1f7a850
+             > *obj = 0x1f79c50
+          ## lobj@0x1f7a850 -> 0x1f7a870
+             > *obj = 0x1f79c50
+          ## lobj@0x1f7a870 -> 0x1f7a890
+             > *obj = 0x1f79c50
+          ## lobj@0x1f7a890 -> 0x1f7a8b0
+             > *obj = 0x1f79c50
+          ## lobj@0x1f7a8b0 [TAIL]
+             > *obj = 0x1f79c50
+No -- No : 
+          ## lobj@0x1f7a910 [BLANK]
+Yes -- Single : 
+          ## lobj@0x1f7a9c0 -> 0x1f7a9e0 [HEAD - size:4]
+          ## lobj@0x1f7a9e0 -> 0x1f7aa00
+             > *obj = 0x1f7a430
+          ## lobj@0x1f7aa00 -> 0x1f7aa20
+             > *obj = 0x1f7a430
+          ## lobj@0x1f7aa20 -> 0x1f7aa40
+             > *obj = 0x1f7a430
+          ## lobj@0x1f7aa40 [TAIL]
+             > *obj = 0x1f7a430
+Yes -- Married : 
+          ## lobj@0x1f7aaa0 [BLANK]
+Yes -- Divorced : 
+          ## lobj@0x1f7ab00 [BLANK]
+No -- Single : 
+          ## lobj@0x1f7ab60 [BLANK]
+No -- Married : 
+          ## lobj@0x1f7abc0 -> 0x1f7abe0 [HEAD - size:8]
+          ## lobj@0x1f7abe0 -> 0x1f7ac00
+             > *obj = 0x1f7a190
+          ## lobj@0x1f7ac00 -> 0x1f7ac20
+             > *obj = 0x1f7a190
+          ## lobj@0x1f7ac20 -> 0x1f7ac40
+             > *obj = 0x1f7a190
+          ## lobj@0x1f7ac40 -> 0x1f7ac60
+             > *obj = 0x1f7a190
+          ## lobj@0x1f7ac60 -> 0x1f7ac80
+             > *obj = 0x1f7a190
+          ## lobj@0x1f7ac80 -> 0x1f7aca0
+             > *obj = 0x1f7a190
+          ## lobj@0x1f7aca0 -> 0x1f7acc0
+             > *obj = 0x1f7a190
+          ## lobj@0x1f7acc0 [TAIL]
+             > *obj = 0x1f7a190
+No -- Divorced : 
+          ## lobj@0x1f7ad20 -> 0x1f7ad40 [HEAD - size:7]
+          ## lobj@0x1f7ad40 -> 0x1f7ad60
+             > *obj = 0x1f79c50
+          ## lobj@0x1f7ad60 -> 0x1f7ad80
+             > *obj = 0x1f79c50
+          ## lobj@0x1f7ad80 -> 0x1f7ada0
+             > *obj = 0x1f79c50
+          ## lobj@0x1f7ada0 -> 0x1f7adc0
+             > *obj = 0x1f79c50
+          ## lobj@0x1f7adc0 -> 0x1f7ade0
+             > *obj = 0x1f79c50
+          ## lobj@0x1f7ade0 -> 0x1f7ae00
+             > *obj = 0x1f79c50
+          ## lobj@0x1f7ae00 [TAIL]
+             > *obj = 0x1f79c50
+## stbl@0x1f78250
+## stbl@0x1f78280
+  > attr_clss = 0x1f78a40[ Defaulted_Borrower ]
+  > attr_node = 0x1f78440[ Home_Owner ]
+  > node_scel = 0x1f782b0
+    ## scel@0x1f782b0
+    ## scel@0x1f782d0
+        > value = 0
+    ## scel@0x1f78330
+        > value = 4
+    ## scel@0x1f7a790
+        > value = 7
+    ## scel@0x1f7a8d0
+        > value = 0
+## stbl@0x1f7a930
+  > attr_clss = 0x1f78a40[ Defaulted_Borrower ]
+  > attr_node = 0x1f78680[ Marital_Status ]
+  > node_scel = 0x1f7a960
+    ## scel@0x1f7a960
+    ## scel@0x1f7a980
+        > value = 4
+    ## scel@0x1f7aa60
+        > value = 0
+    ## scel@0x1f7aac0
+        > value = 0
+    ## scel@0x1f7ab20
+        > value = 0
+    ## scel@0x1f7ab80
+        > value = 8
+    ## scel@0x1f7ace0
+        > value = 7
+## stbl@0x1f7ae20
+  > attr_clss = 0x1f78a40[ Defaulted_Borrower ]
+  > attr_node = 0x1f78950[ Annual_Income ]
+  > node_scel = 0x1f7ae50
+    ## scel@0x1f7ae50

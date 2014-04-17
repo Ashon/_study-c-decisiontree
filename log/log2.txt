@@ -1,0 +1,36 @@
+## stbl@0x1909250
+## stbl@0x1909280
+  > attr_clss = 0x1909a40[ Defaulted_Borrower ]
+  > attr_node = 0x1909440[ Home_Owner ]
+  > node_scel = 0x19092b0
+    ## scel@0x19092b0
+    ## scel@0x19092d0
+        > value = 0
+    ## scel@0x1909330
+        > value = 4
+    ## scel@0x190b790
+        > value = 7
+    ## scel@0x190b8d0
+        > value = 0
+## stbl@0x190b930
+  > attr_clss = 0x1909a40[ Defaulted_Borrower ]
+  > attr_node = 0x1909680[ Marital_Status ]
+  > node_scel = 0x190b960
+    ## scel@0x190b960
+    ## scel@0x190b980
+        > value = 4
+    ## scel@0x190ba60
+        > value = 0
+    ## scel@0x190bac0
+        > value = 0
+    ## scel@0x190bb20
+        > value = 0
+    ## scel@0x190bb80
+        > value = 8
+    ## scel@0x190bce0
+        > value = 7
+## stbl@0x190be20
+  > attr_clss = 0x1909a40[ Defaulted_Borrower ]
+  > attr_node = 0x1909950[ Annual_Income ]
+  > node_scel = 0x190be50
+    ## scel@0x190be50

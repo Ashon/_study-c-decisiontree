@@ -48,10 +48,12 @@ dtree* new_dtree(dtree* t, FILE* fp) {
             continue;
         }
 
+        // generate attribute
         if(cond == 1) {
             cur_attr = add_attr(ins, cur_attr, buf);
         }
 
+        // generate object
         if(cond == 2) {
             cur_obj = add_obj(ins, cur_obj, buf);
         }
@@ -67,6 +69,14 @@ attr* add_attr(dtree* t, attr* cur_attr, char* buf) {
     cur_attr = new_attr(cur_attr, buf, t->len_attr);
 
     return cur_attr;
+}
+
+attr* get_clss(dtree* t) {
+    attr* cur = t->node_attr->link;
+    for(; cur; cur = cur->link)
+        if(*(cur->type) == AT_TYPE_TARGET)
+            return cur;
+    return 0;
 }
 
 obj* add_obj(dtree* t, obj* cur_obj, char* buf) {
