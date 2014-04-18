@@ -168,7 +168,7 @@ int del_attr(attr* head) {
 void dbg_attr(attr* head) {
     attr* cur = head;
     for(; cur; cur = cur->link){
-        printf("## attr@%p", cur);
+        printf(" # attr@%p", cur);
         if(!cur->link && !cur->name)
             printf(" [BLANK]\n");
         else {

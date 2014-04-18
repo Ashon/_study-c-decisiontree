@@ -1,7 +1,6 @@
 /**
  * Decision Tree Genarator v0.1
  *
- * 
  * dtree.c
  *
  * @author juwon.lee
@@ -23,20 +22,25 @@ dtree* new_dtree(dtree* t, FILE* fp) {
 
     attr* cur_attr;
     obj* cur_obj;
+    stbl* cur_stbl;
 
     dtree* ins = (dtree*)malloc(sizeof(dtree));
 
     ins->len_attr = (int*)malloc(sizeof(int));
     ins->len_obj = (int*)malloc(sizeof(int));
+    ins->len_stbl = (int*)malloc(sizeof(int));
 
     *(ins->len_attr) = 0;
     *(ins->len_obj) = 0;
+    *(ins->len_stbl) = 0;
 
     ins->node_attr = new_attr(0, 0, ins->len_attr);
     ins->node_obj = new_obj(0, 0, ins->len_obj);
+    ins->node_stbl = new_stbl(0, 0, 0, ins->len_stbl);
 
     cur_attr = ins->node_attr;
     cur_obj = ins->node_obj;
+    cur_stbl = ins->node_stbl;
 
     cond++;
 
@@ -58,6 +62,9 @@ dtree* new_dtree(dtree* t, FILE* fp) {
             cur_obj = add_obj(ins, cur_obj, buf);
         }
     }
+    
+    cur_stbl = gen_stbl(ins);
+
     free(buf);
     
     t = ins;
@@ -71,7 +78,7 @@ attr* add_attr(dtree* t, attr* cur_attr, char* buf) {
     return cur_attr;
 }
 
-attr* get_clss(dtree* t) {
+attr* get_clss_attr(dtree* t) {
     attr* cur = t->node_attr->link;
     for(; cur; cur = cur->link)
         if(*(cur->type) == AT_TYPE_TARGET)
@@ -117,12 +124,28 @@ obj* add_obj(dtree* t, obj* cur_obj, char* buf) {
     return cur_obj;
 }
 
+stbl* gen_stbl(dtree* t) {
+    stbl* cur_stbl = t->node_stbl;
+    attr* attr_clss = get_clss_attr(t);
+    attr* cur_attr = t->node_attr;
+
+    for(; cur_attr; cur_attr = cur_attr->link) {
+        if(cur_attr != attr_clss) {
+            if(cur_attr->name)
+                cur_stbl = new_stbl(cur_stbl, attr_clss, cur_attr, t->len_stbl);
+        }
+    }
+    return t->node_stbl;
+}
+
 int del_dtree(dtree* t) {
     del_attr(t->node_attr);
     del_obj(t->node_obj);
+    del_stbl(t->node_stbl);
 
     free(t->len_attr);
     free(t->len_obj);
+    free(t->len_stbl);
 
     free(t);
     return 0;
@@ -130,8 +153,10 @@ int del_dtree(dtree* t) {
 
 void dbg_dtree(dtree* t) {
     printf("## dtree@%p\n", t);
-    printf("   > node_attr = %p\n", t->node_attr);
+    printf("# node_attr = %p\n", t->node_attr);
     dbg_attr(t->node_attr);
-    printf("   > node_obj = %p\n", t->node_obj);
+    printf("# node_obj = %p\n", t->node_obj);
     dbg_obj(t->node_obj);
+    printf("# node_stbl = %p\n", t->node_stbl);
+    dbg_stbl(t->node_stbl);
 }

@@ -155,7 +155,7 @@ void dbg_obj(obj* head) {
     obj* cur = head;
 
     for(; cur; cur = cur->link) {
-        printf("## obj@%p", cur);
+        printf(" # obj@%p", cur);
         if(!cur->link && !cur->node_prop)
             printf(" [BLANK]\n");
         else {

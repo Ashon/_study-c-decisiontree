@@ -1,7 +1,6 @@
 /**
  * Decision Tree Genarator v0.1
  *
- * 
  * adt_dtree.h
  *
  * @author juwon.lee
@@ -59,20 +58,33 @@
  *    |   +-> *link : next attr node.
  *    |
  *    +---> obj* node_obj : [single list]
+ *    |   |
+ *    |   +---> int* len_obj : points to [dtree->len_obj] (indirect)
+ *    |   +---> int* len_prop : # of property (direct)
+ *    |   |
+ *    |   +---> prop* node_prop : [single list]
+ *    |   |   |
+ *    |   |   +---> int* len_prop : points to [obj->len_prop] (indirect)
+ *    |   |   +---> int* val : property value.
+ *    |   |   |
+ *    |   |   +---> prop* link : next prop node.
+ *    |   |
+ *    |   +---> obj* link : next obj node.
+ *    |
+ *    +---> stbl* node_stbl : [single list]
  *        |
- *        +---> int* len_obj : points to [dtree->len_obj] (indirect)
- *        +---> int* len_prop : # of property (direct)
+ *        +---> int* len_stbl : points to [dtree->len_stbl]
+ *        +---> attr* attr_node : points to [dtree->node_attr]
+ *        +---> attr* attr_clss : points to [dtree->node_attr type = class]
  *        |
- *        +---> prop* node_prop : [single list]
- *        |   |
- *        |   +---> int* len_prop : points to [obj->len_prop] (indirect)
- *        |   +---> int* val : property value.
- *        |   |
- *        |   +---> prop* link : next prop node.
  *        |
- *        +---> obj* link : next obj node.
- *
- *
+ *        |
+ *        |
+ *        |
+ *        |
+ *        |
+ *        |
+
  * @constraint
  *    - # of obj's property equals to # of attr:
  *    - all of [single list]s have empty head node.
@@ -168,26 +180,9 @@ int n_attr(attr*);
 int del_attr(attr*);
 void dbg_attr(attr*);
 
-// ADT - dtree
-typedef struct dtree_ {
-    int* len_attr;
-    int* len_obj;
-
-    attr* node_attr;
-    obj* node_obj;
-
-} dtree;
-
-// function table of dtree
-dtree* new_dtree(dtree*, FILE*);
-int del_dtree(dtree*);
-void dbg_dtree(dtree*);
-attr* add_attr(dtree*, attr*, char*);
-attr* get_clss(dtree*);
-obj* add_obj(dtree*, obj*, char*);
-
 // ADT - scel - split cell
 typedef struct scel_ {
+    int* len_scel;
 	int* len_lobj; // the value of split table cell.
 
 	lobj* node_lobj;
@@ -196,7 +191,7 @@ typedef struct scel_ {
 } scel;
 
 //function table of scel
-scel* new_scel(scel*, clss*, clss*);
+scel* new_scel(scel*, clss*, clss*, int*);
 int len_scel(scel*);
 int n_scel(scel*);
 int del_scel(scel*);
@@ -204,24 +199,45 @@ void dbg_scel(scel*);
 
 // ADT - stbl - split table
 typedef struct stbl_ {
+    int* len_stbl;
 	attr* attr_node; // column length = col->len_clss
 	attr* attr_clss; // row length = row->len_clss
 
+    int* len_scel;
 	scel* node_scel;
 
 	struct stbl_* link;
 } stbl;
 
-//function table of stbl
-stbl* new_stbl(stbl*, attr*, attr*);
+// function table of stbl
+stbl* new_stbl(stbl*, attr*, attr*, int*);
 int len_stbl(stbl*);
 int n_stbl(stbl*);
 int nrow_stbl(stbl*);
 int ncol_stbl(stbl*);
 int del_stbl(stbl*);
+scel* get_scel(stbl*, int, int);
+float gini_idx(stbl*, int);
+float gini_split(stbl*);
 void dbg_stbl(stbl*);
 
+// ADT - dtree
+typedef struct dtree_ {
+    int* len_attr;
+    int* len_obj;
+    int* len_stbl;
 
+    attr* node_attr;
+    obj* node_obj;
+    stbl* node_stbl;
 
+} dtree;
 
-
+// function table of dtree
+dtree* new_dtree(dtree*, FILE*);
+int del_dtree(dtree*);
+void dbg_dtree(dtree*);
+attr* add_attr(dtree*, attr*, char*);
+attr* get_clss_attr(dtree*);
+obj* add_obj(dtree*, obj*, char*);
+stbl* gen_stbl(dtree*);

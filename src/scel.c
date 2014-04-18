@@ -31,24 +31,22 @@
  *    scel* -
  *
  */
-scel* new_scel(scel* s, clss* ccls, clss* ncls) {
+scel* new_scel(scel* s, clss* ccls, clss* ncls, int* len) {
     scel* ins = (scel*)malloc(sizeof(scel));
     lobj* cur_ins;
     obj* obj_fnd;
 
-    // cursor of attr_node->node_clss->node_lobj (col)
     lobj* cur_n_lobj; 
-
-    // cursor of attr_class->node_clss->node_lobj (row)
     lobj* cur_c_lobj;
+
+    ins->len_scel = len;
+    *(ins->len_scel) = *(ins->len_scel) + 1;
 
     if(s) {
         ins->len_lobj = (int*)malloc(sizeof(int));
         *(ins->len_lobj) = 0;
 
         ins->node_lobj = new_lobj(0, 0, ins->len_lobj);
-
-        // initialize lobj cursor of ins->node_lobj ..
         cur_ins = ins->node_lobj;
 
         cur_c_lobj = ccls->node_lobj;
@@ -61,24 +59,24 @@ scel* new_scel(scel* s, clss* ccls, clss* ncls) {
                     cur_ins = new_lobj(cur_ins, obj_fnd, ins->len_lobj);
             }
         }
+
+        s->link = ins;
     } else {
         ins->len_lobj = 0;
         ins->node_lobj = 0;
     }
 
-    if(s)
-        s->link = ins;
     ins->link = 0;
 
     return ins;
 }
 
 int len_scel(scel* c) {
-    return 0;
+    return *(c->len_scel);
 }
 
 int n_scel(scel* c) {
-    return 1;
+    return *(c->len_scel) - 1;
 }
 
 int del_scel(scel* head) {
