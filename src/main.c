@@ -12,20 +12,19 @@
 
 #include <stdio.h>
 
-#include "adt_dtree.h"
+#include "ADT_DecisionTree.h"
 
-int main() {
-
-    char fname[] = "./dat/train.dat";
-    dtree* t;
+int main(int argc, char *argv[]) {
+    DecisionTable* t;
     FILE* fp;
-    fp = fopen(fname, "r");
-    if(fp) {
-        t = new_dtree(t, fp);
-        
-        dbg_dtree(t);
 
-        del_dtree(t);
+    fp = fopen(argv[1], "r");
+    if(fp) {
+        t = newDecisionTable(t, fp);
+        
+        dbgDecisionTable(t);
+
+        delDecisionTable(t);
         fclose(fp);
     }
 

@@ -1,0 +1,276 @@
+## dtree@0x66e360
+   > node_attr = 0x66e400
+## attr@0x66e400 -> 0x66e4b0 [HEAD - size:4]
+## attr@0x66e4b0 -> 0x66e6f0
+   > name = Home_Owner
+   > type = 2 [T_MULTIPLE]
+   > node_clss = 0x66e530
+     ## clss@0x66e530 -> 0x66e5a0 [HEAD - size:2]
+     ## clss@0x66e5a0 -> 0x66e660
+        > name = Yes
+        > node_lobj = 0x66e640
+          ## lobj@0x66e640 -> 0x66ef40 [HEAD - size:3]
+          ## lobj@0x66ef40 -> 0x66f720
+             > *obj = 0x66ed00
+          ## lobj@0x66f720 -> 0x66ff00
+             > *obj = 0x66f4e0
+          ## lobj@0x66ff00 [TAIL]
+             > *obj = 0x66fcc0
+     ## clss@0x66e660 [TAIL]
+        > name = No
+        > node_lobj = 0x66e6d0
+          ## lobj@0x66e6d0 -> 0x66f1e0 [HEAD - size:7]
+          ## lobj@0x66f1e0 -> 0x66f480
+             > *obj = 0x66efa0
+          ## lobj@0x66f480 -> 0x66f9c0
+             > *obj = 0x66f240
+          ## lobj@0x66f9c0 -> 0x66fc60
+             > *obj = 0x66f780
+          ## lobj@0x66fc60 -> 0x6701a0
+             > *obj = 0x66fa20
+          ## lobj@0x6701a0 -> 0x670440
+             > *obj = 0x66ff60
+          ## lobj@0x670440 -> 0x6706e0
+             > *obj = 0x670200
+          ## lobj@0x6706e0 [TAIL]
+             > *obj = 0x6704a0
+## attr@0x66e6f0 -> 0x66e9c0
+   > name = Marital_Status
+   > type = 2 [T_MULTIPLE]
+   > node_clss = 0x66e770
+     ## clss@0x66e770 -> 0x66e7e0 [HEAD - size:3]
+     ## clss@0x66e7e0 -> 0x66e8a0
+        > name = Single
+        > node_lobj = 0x66e880
+          ## lobj@0x66e880 -> 0x66ef60 [HEAD - size:4]
+          ## lobj@0x66ef60 -> 0x66f4a0
+             > *obj = 0x66ed00
+          ## lobj@0x66f4a0 -> 0x6701c0
+             > *obj = 0x66f240
+          ## lobj@0x6701c0 -> 0x670700
+             > *obj = 0x66ff60
+          ## lobj@0x670700 [TAIL]
+             > *obj = 0x6704a0
+     ## clss@0x66e8a0 -> 0x66e930
+        > name = Married
+        > node_lobj = 0x66e910
+          ## lobj@0x66e910 -> 0x66f200 [HEAD - size:4]
+          ## lobj@0x66f200 -> 0x66f740
+             > *obj = 0x66efa0
+          ## lobj@0x66f740 -> 0x66fc80
+             > *obj = 0x66f4e0
+          ## lobj@0x66fc80 -> 0x670460
+             > *obj = 0x66fa20
+          ## lobj@0x670460 [TAIL]
+             > *obj = 0x670200
+     ## clss@0x66e930 [TAIL]
+        > name = Divorced
+        > node_lobj = 0x66e9a0
+          ## lobj@0x66e9a0 -> 0x66f9e0 [HEAD - size:2]
+          ## lobj@0x66f9e0 -> 0x66ff20
+             > *obj = 0x66f780
+          ## lobj@0x66ff20 [TAIL]
+             > *obj = 0x66fcc0
+## attr@0x66e9c0 -> 0x66eab0
+   > name = Annual_Income
+   > type = 3 [T_CONTINUOUS]
+   > node_clss = 0x66ea40
+     ## clss@0x66ea40 [BLANK]
+## attr@0x66eab0 [TAIL]
+   > name = Defaulted_Borrower
+   > type = 0 [T_CLASS]
+   > node_clss = 0x66eb70
+     ## clss@0x66eb70 -> 0x66ebe0 [HEAD - size:2]
+     ## clss@0x66ebe0 -> 0x66ec70
+        > name = Yes
+        > node_lobj = 0x66ec50
+          ## lobj@0x66ec50 -> 0x66fa00 [HEAD - size:3]
+          ## lobj@0x66fa00 -> 0x6701e0
+             > *obj = 0x66f780
+          ## lobj@0x6701e0 -> 0x670720
+             > *obj = 0x66ff60
+          ## lobj@0x670720 [TAIL]
+             > *obj = 0x6704a0
+     ## clss@0x66ec70 [TAIL]
+        > name = No
+        > node_lobj = 0x66ece0
+          ## lobj@0x66ece0 -> 0x66ef80 [HEAD - size:7]
+          ## lobj@0x66ef80 -> 0x66f220
+             > *obj = 0x66ed00
+          ## lobj@0x66f220 -> 0x66f4c0
+             > *obj = 0x66efa0
+          ## lobj@0x66f4c0 -> 0x66f760
+             > *obj = 0x66f240
+          ## lobj@0x66f760 -> 0x66fca0
+             > *obj = 0x66f4e0
+          ## lobj@0x66fca0 -> 0x66ff40
+             > *obj = 0x66fa20
+          ## lobj@0x66ff40 -> 0x670480
+             > *obj = 0x66fcc0
+          ## lobj@0x670480 [TAIL]
+             > *obj = 0x670200
+   > node_obj = 0x66e440
+## obj@0x66e440 -> 0x66ed00 [HEAD - size:10]
+## obj@0x66ed00 -> 0x66efa0
+   > node_prop = 0x66ed50
+     ## prop@0x66ed50 -> 0x66ed80 [HEAD - size:4]
+     ## prop@0x66ed80 -> 0x66edf0
+        > val = 0
+     ## prop@0x66edf0 -> 0x66ee60
+        > val = 0
+     ## prop@0x66ee60 -> 0x66eed0
+        > val = 125
+     ## prop@0x66eed0 [TAIL]
+        > val = 1
+## obj@0x66efa0 -> 0x66f240
+   > node_prop = 0x66eff0
+     ## prop@0x66eff0 -> 0x66f020 [HEAD - size:4]
+     ## prop@0x66f020 -> 0x66f090
+        > val = 1
+     ## prop@0x66f090 -> 0x66f100
+        > val = 1
+     ## prop@0x66f100 -> 0x66f170
+        > val = 100
+     ## prop@0x66f170 [TAIL]
+        > val = 1
+## obj@0x66f240 -> 0x66f4e0
+   > node_prop = 0x66f290
+     ## prop@0x66f290 -> 0x66f2c0 [HEAD - size:4]
+     ## prop@0x66f2c0 -> 0x66f330
+        > val = 1
+     ## prop@0x66f330 -> 0x66f3a0
+        > val = 0
+     ## prop@0x66f3a0 -> 0x66f410
+        > val = 70
+     ## prop@0x66f410 [TAIL]
+        > val = 1
+## obj@0x66f4e0 -> 0x66f780
+   > node_prop = 0x66f530
+     ## prop@0x66f530 -> 0x66f560 [HEAD - size:4]
+     ## prop@0x66f560 -> 0x66f5d0
+        > val = 0
+     ## prop@0x66f5d0 -> 0x66f640
+        > val = 1
+     ## prop@0x66f640 -> 0x66f6b0
+        > val = 120
+     ## prop@0x66f6b0 [TAIL]
+        > val = 1
+## obj@0x66f780 -> 0x66fa20
+   > node_prop = 0x66f7d0
+     ## prop@0x66f7d0 -> 0x66f800 [HEAD - size:4]
+     ## prop@0x66f800 -> 0x66f870
+        > val = 1
+     ## prop@0x66f870 -> 0x66f8e0
+        > val = 2
+     ## prop@0x66f8e0 -> 0x66f950
+        > val = 95
+     ## prop@0x66f950 [TAIL]
+        > val = 0
+## obj@0x66fa20 -> 0x66fcc0
+   > node_prop = 0x66fa70
+     ## prop@0x66fa70 -> 0x66faa0 [HEAD - size:4]
+     ## prop@0x66faa0 -> 0x66fb10
+        > val = 1
+     ## prop@0x66fb10 -> 0x66fb80
+        > val = 1
+     ## prop@0x66fb80 -> 0x66fbf0
+        > val = 60
+     ## prop@0x66fbf0 [TAIL]
+        > val = 1
+## obj@0x66fcc0 -> 0x66ff60
+   > node_prop = 0x66fd10
+     ## prop@0x66fd10 -> 0x66fd40 [HEAD - size:4]
+     ## prop@0x66fd40 -> 0x66fdb0
+        > val = 0
+     ## prop@0x66fdb0 -> 0x66fe20
+        > val = 2
+     ## prop@0x66fe20 -> 0x66fe90
+        > val = 220
+     ## prop@0x66fe90 [TAIL]
+        > val = 1
+## obj@0x66ff60 -> 0x670200
+   > node_prop = 0x66ffb0
+     ## prop@0x66ffb0 -> 0x66ffe0 [HEAD - size:4]
+     ## prop@0x66ffe0 -> 0x670050
+        > val = 1
+     ## prop@0x670050 -> 0x6700c0
+        > val = 0
+     ## prop@0x6700c0 -> 0x670130
+        > val = 85
+     ## prop@0x670130 [TAIL]
+        > val = 0
+## obj@0x670200 -> 0x6704a0
+   > node_prop = 0x670250
+     ## prop@0x670250 -> 0x670280 [HEAD - size:4]
+     ## prop@0x670280 -> 0x6702f0
+        > val = 1
+     ## prop@0x6702f0 -> 0x670360
+        > val = 1
+     ## prop@0x670360 -> 0x6703d0
+        > val = 75
+     ## prop@0x6703d0 [TAIL]
+        > val = 1
+## obj@0x6704a0 [TAIL]
+   > node_prop = 0x6704f0
+     ## prop@0x6704f0 -> 0x670520 [HEAD - size:4]
+     ## prop@0x670520 -> 0x670590
+        > val = 1
+     ## prop@0x670590 -> 0x670600
+        > val = 0
+     ## prop@0x670600 -> 0x670670
+        > val = 90
+     ## prop@0x670670 [TAIL]
+        > val = 0
+
+
+   > node_stbl = 0x66e470
+## stbl@0x66e470 -> 0x670740 [HEAD - size:3]
+## stbl@0x670740 -> 0x670ad0
+   > attr_clss = 0x66eab0[ Defaulted_Borrower ]
+   > attr_node = 0x66e4b0[ Home_Owner ]
+   > node_scel = 0x6707a0
+    ## scel@0x6707a0 -> 0x6707d0 [HEAD - size:4]
+    ## scel@0x6707d0 -> 0x670840
+        > value = 0
+    ## scel@0x670840 -> 0x670910
+        > value = 3
+    ## scel@0x670910 -> 0x6709e0
+        > value = 3
+    ## scel@0x6709e0 [TAIL]
+        > value = 4
+0^2 / 3^2
+sigma : 0.000000
+0^2 / 3^2
+sigma : 0.000000
+gini idx(clss_length : 2) : 1.000000
+0^2 / 7^2
+sigma : 0.000000
+0^2 / 7^2
+sigma : 0.000000
+gini idx(clss_length : 2) : 1.000000
+## stbl@0x670ad0 -> 0x670f40
+   > attr_clss = 0x66eab0[ Defaulted_Borrower ]
+   > attr_node = 0x66e6f0[ Marital_Status ]
+   > node_scel = 0x670b30
+    ## scel@0x670b30 -> 0x670b60 [HEAD - size:6]
+    ## scel@0x670b60 -> 0x670c10
+        > value = 2
+    ## scel@0x670c10 -> 0x670c80
+        > value = 0
+    ## scel@0x670c80 -> 0x670d10
+        > value = 1
+    ## scel@0x670d10 -> 0x670dc0
+        > value = 2
+    ## scel@0x670dc0 -> 0x670eb0
+        > value = 4
+    ## scel@0x670eb0 [TAIL]
+        > value = 1
+2^2 / 4^2
+sigma : 0.250000
+0^2 / 4^2
+sigma : 0.250000
+gini idx(clss_length : 3) : 0.750000
+2^2 / 4^2
+sigma : 0.250000
+0^2 / 4^2
+sigma :

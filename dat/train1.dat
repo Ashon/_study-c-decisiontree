@@ -1,0 +1,16 @@
+#
+Home_Owner{No,Yes}
+Marital_Status{Single,Married,Divorced}
+Annual_Income{@}
+Defaulted_Borrower@{No,Yes}
+#
+1,0,125,0
+0,1,100,0
+0,0,70,0
+1,1,120,0
+0,2,95,1
+0,1,60,0
+1,2,220,0
+0,0,85,1
+0,1,75,0
+0,0,90,1

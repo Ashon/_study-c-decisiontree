@@ -24,7 +24,7 @@ $(TARGET) : $(OBJS)
 
 # generate object file
 $(OBJ_PATH)%.o : $(SRC_PATH)%.c
-	$(CC) -c $(addprefix $(SRC_PATH), $(notdir $(@:.o=.c))) -o $@
+	$(CC) -O2 -c $(addprefix $(SRC_PATH), $(notdir $(@:.o=.c))) -o $@
 
 # make directory
 $(OBJ_PATH) :

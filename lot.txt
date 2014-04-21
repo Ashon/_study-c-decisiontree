@@ -1,0 +1,275 @@
+## DecisionTable@0x894250
+> attributeList = 0x894400
+ # Attribute@0x894400 -> 0x8944b0 [HEAD - size:4]
+ # Attribute@0x8944b0 -> 0x894720
+   > attributeName = Home_Owner
+   > type = 1 : [ATTRIBUTE_TYPE_BINARY]
+   > attributeNodeList = 0x894530
+      # AttributeNode@0x894530 -> 0x8945b0 [HEAD - size:2]
+      # AttributeNode@0x8945b0 -> 0x894680
+        > attributeNodeName = No
+        > parent = 0x8944b0
+        > objectWrapperList = 0x894660
+           # ObjectWrapper@0x894660 -> 0x895110 [HEAD - size:7]
+           # ObjectWrapper@0x895110 -> 0x8952e0
+             > object = 0x894fa0
+           # ObjectWrapper@0x8952e0 -> 0x895680
+             > object = 0x895170
+           # ObjectWrapper@0x895680 -> 0x895850
+             > object = 0x895510
+           # ObjectWrapper@0x895850 -> 0x895bf0
+             > object = 0x8956e0
+           # ObjectWrapper@0x895bf0 -> 0x895dc0
+             > object = 0x895a80
+           # ObjectWrapper@0x895dc0 -> 0x895f90
+             > object = 0x895c50
+           # ObjectWrapper@0x895f90 [TAIL]
+             > object = 0x895e20
+      # AttributeNode@0x894680 [TAIL]
+        > attributeNodeName = Yes
+        > parent = 0x8944b0
+        > objectWrapperList = 0x894700
+           # ObjectWrapper@0x894700 -> 0x894f40 [HEAD - size:3]
+           # ObjectWrapper@0x894f40 -> 0x8954b0
+             > object = 0x894dd0
+           # ObjectWrapper@0x8954b0 -> 0x895a20
+             > object = 0x895340
+           # ObjectWrapper@0x895a20 [TAIL]
+             > object = 0x8958b0
+ # Attribute@0x894720 -> 0x894a30
+   > attributeName = Marital_Status
+   > type = 2 : [ATTRIBUTE_TYPE_CATEGORICAL]
+   > attributeNodeList = 0x8947a0
+      # AttributeNode@0x8947a0 -> 0x894820 [HEAD - size:3]
+      # AttributeNode@0x894820 -> 0x8948f0
+        > attributeNodeName = Single
+        > parent = 0x894720
+        > objectWrapperList = 0x8948d0
+           # ObjectWrapper@0x8948d0 -> 0x894f60 [HEAD - size:4]
+           # ObjectWrapper@0x894f60 -> 0x895300
+             > object = 0x894dd0
+           # ObjectWrapper@0x895300 -> 0x895c10
+             > object = 0x895170
+           # ObjectWrapper@0x895c10 -> 0x895fb0
+             > object = 0x895a80
+           # ObjectWrapper@0x895fb0 [TAIL]
+             > object = 0x895e20
+      # AttributeNode@0x8948f0 -> 0x894990
+        > attributeNodeName = Married
+        > parent = 0x894720
+        > objectWrapperList = 0x894970
+           # ObjectWrapper@0x894970 -> 0x895130 [HEAD - size:4]
+           # ObjectWrapper@0x895130 -> 0x8954d0
+             > object = 0x894fa0
+           # ObjectWrapper@0x8954d0 -> 0x895870
+             > object = 0x895340
+           # ObjectWrapper@0x895870 -> 0x895de0
+             > object = 0x8956e0
+           # ObjectWrapper@0x895de0 [TAIL]
+             > object = 0x895c50
+      # AttributeNode@0x894990 [TAIL]
+        > attributeNodeName = Divorced
+        > parent = 0x894720
+        > objectWrapperList = 0x894a10
+           # ObjectWrapper@0x894a10 -> 0x8956a0 [HEAD - size:2]
+           # ObjectWrapper@0x8956a0 -> 0x895a40
+             > object = 0x895510
+           # ObjectWrapper@0x895a40 [TAIL]
+             > object = 0x8958b0
+ # Attribute@0x894a30 -> 0x894b30
+   > attributeName = Annual_Income
+   > type = 3 : [ATTRIBUTE_TYPE_CONTINUOUS]
+   > attributeNodeList = 0x894ab0
+      # AttributeNode@0x894ab0 [BLANK]
+ # Attribute@0x894b30 [TAIL]
+   > attributeName = Defaulted_Borrower
+   > type = 0 : [ATTRIBUTE_TYPE_CLASS]
+   > attributeNodeList = 0x894be0
+      # AttributeNode@0x894be0 -> 0x894c60 [HEAD - size:2]
+      # AttributeNode@0x894c60 -> 0x894d30
+        > attributeNodeName = No
+        > parent = 0x894b30
+        > objectWrapperList = 0x894d10
+           # ObjectWrapper@0x894d10 -> 0x894f80 [HEAD - size:7]
+           # ObjectWrapper@0x894f80 -> 0x895150
+             > object = 0x894dd0
+           # ObjectWrapper@0x895150 -> 0x895320
+             > object = 0x894fa0
+           # ObjectWrapper@0x895320 -> 0x8954f0
+             > object = 0x895170
+           # ObjectWrapper@0x8954f0 -> 0x895890
+             > object = 0x895340
+           # ObjectWrapper@0x895890 -> 0x895a60
+             > object = 0x8956e0
+           # ObjectWrapper@0x895a60 -> 0x895e00
+             > object = 0x8958b0
+           # ObjectWrapper@0x895e00 [TAIL]
+             > object = 0x895c50
+      # AttributeNode@0x894d30 [TAIL]
+        > attributeNodeName = Yes
+        > parent = 0x894b30
+        > objectWrapperList = 0x894db0
+           # ObjectWrapper@0x894db0 -> 0x8956c0 [HEAD - size:3]
+           # ObjectWrapper@0x8956c0 -> 0x895c30
+             > object = 0x895510
+           # ObjectWrapper@0x895c30 -> 0x895fd0
+             > object = 0x895a80
+           # ObjectWrapper@0x895fd0 [TAIL]
+             > object = 0x895e20
+> objectList = 0x894440
+ # Object@0x894440 -> 0x894dd0 [HEAD - size:10]
+ # Object@0x894dd0 -> 0x894fa0
+   > PropertyList = 0x894e20
+      # Property@0x894e20 -> 0x894e40 [HEAD - size:4]
+      # Property@0x894e40 -> 0x894e80
+        > value = 1
+      # Property@0x894e80 -> 0x894ec0
+        > value = 0
+      # Property@0x894ec0 -> 0x894f00
+        > value = 125
+      # Property@0x894f00 [TAIL]
+        > value = 0
+ # Object@0x894fa0 -> 0x895170
+   > PropertyList = 0x894ff0
+      # Property@0x894ff0 -> 0x895010 [HEAD - size:4]
+      # Property@0x895010 -> 0x895050
+        > value = 0
+      # Property@0x895050 -> 0x895090
+        > value = 1
+      # Property@0x895090 -> 0x8950d0
+        > value = 100
+      # Property@0x8950d0 [TAIL]
+        > value = 0
+ # Object@0x895170 -> 0x895340
+   > PropertyList = 0x8951c0
+      # Property@0x8951c0 -> 0x8951e0 [HEAD - size:4]
+      # Property@0x8951e0 -> 0x895220
+        > value = 0
+      # Property@0x895220 -> 0x895260
+        > value = 0
+      # Property@0x895260 -> 0x8952a0
+        > value = 70
+      # Property@0x8952a0 [TAIL]
+        > value = 0
+ # Object@0x895340 -> 0x895510
+   > PropertyList = 0x895390
+      # Property@0x895390 -> 0x8953b0 [HEAD - size:4]
+      # Property@0x8953b0 -> 0x8953f0
+        > value = 1
+      # Property@0x8953f0 -> 0x895430
+        > value = 1
+      # Property@0x895430 -> 0x895470
+        > value = 120
+      # Property@0x895470 [TAIL]
+        > value = 0
+ # Object@0x895510 -> 0x8956e0
+   > PropertyList = 0x895560
+      # Property@0x895560 -> 0x895580 [HEAD - size:4]
+      # Property@0x895580 -> 0x8955c0
+        > value = 0
+      # Property@0x8955c0 -> 0x895600
+        > value = 2
+      # Property@0x895600 -> 0x895640
+        > value = 95
+      # Property@0x895640 [TAIL]
+        > value = 1
+ # Object@0x8956e0 -> 0x8958b0
+   > PropertyList = 0x895730
+      # Property@0x895730 -> 0x895750 [HEAD - size:4]
+      # Property@0x895750 -> 0x895790
+        > value = 0
+      # Property@0x895790 -> 0x8957d0
+        > value = 1
+      # Property@0x8957d0 -> 0x895810
+        > value = 60
+      # Property@0x895810 [TAIL]
+        > value = 0
+ # Object@0x8958b0 -> 0x895a80
+   > PropertyList = 0x895900
+      # Property@0x895900 -> 0x895920 [HEAD - size:4]
+      # Property@0x895920 -> 0x895960
+        > value = 1
+      # Property@0x895960 -> 0x8959a0
+        > value = 2
+      # Property@0x8959a0 -> 0x8959e0
+        > value = 220
+      # Property@0x8959e0 [TAIL]
+        > value = 0
+ # Object@0x895a80 -> 0x895c50
+   > PropertyList = 0x895ad0
+      # Property@0x895ad0 -> 0x895af0 [HEAD - size:4]
+      # Property@0x895af0 -> 0x895b30
+        > value = 0
+      # Property@0x895b30 -> 0x895b70
+        > value = 0
+      # Property@0x895b70 -> 0x895bb0
+        > value = 85
+      # Property@0x895bb0 [TAIL]
+        > value = 1
+ # Object@0x895c50 -> 0x895e20
+   > PropertyList = 0x895ca0
+      # Property@0x895ca0 -> 0x895cc0 [HEAD - size:4]
+      # Property@0x895cc0 -> 0x895d00
+        > value = 0
+      # Property@0x895d00 -> 0x895d40
+        > value = 1
+      # Property@0x895d40 -> 0x895d80
+        > value = 75
+      # Property@0x895d80 [TAIL]
+        > value = 0
+ # Object@0x895e20 [TAIL]
+   > PropertyList = 0x895e70
+      # Property@0x895e70 -> 0x895e90 [HEAD - size:4]
+      # Property@0x895e90 -> 0x895ed0
+        > value = 0
+      # Property@0x895ed0 -> 0x895f10
+        > value = 0
+      # Property@0x895f10 -> 0x895f50
+        > value = 90
+      # Property@0x895f50 [TAIL]
+        > value = 1
+> splitTableList = 0x894470
+ # SplitTable@0x894470 -> 0x895ff0 [HEAD - size:3]
+ # SplitTable@0x895ff0 -> 0x896380
+   > attributeRow = 0x894b30[ Defaulted_Borrower ]
+   > attributeColumn = 0x8944b0[ Home_Owner ]
+   > GINI index [ Home_Owner : No ] = 0.489796
+   > GINI index [ Home_Owner : Yes ] = 0.000000
+   > GINI Split = 0.342857
+   > splitTableCellList = 0x896050
+     # SplitTableCell@0x896050 -> 0x896080 [HEAD - size:4]
+     # SplitTableCell@0x896080 -> 0x896170
+       > value = 4
+     # SplitTableCell@0x896170 -> 0x896240
+       > value = 3
+     # SplitTableCell@0x896240 -> 0x896310
+       > value = 3
+     # SplitTableCell@0x896310 [TAIL]
+       > value = 0
+ # SplitTable@0x896380 -> 0x8967f0
+   > attributeRow = 0x894b30[ Defaulted_Borrower ]
+   > attributeColumn = 0x894720[ Marital_Status ]
+   > GINI index [ Marital_Status : Single ] = 0.500000
+   > GINI index [ Marital_Status : Married ] = 0.000000
+   > GINI index [ Marital_Status : Divorced ] = 0.500000
+   > GINI Split = 0.300000
+   > splitTableCellList = 0x8963e0
+     # SplitTableCell@0x8963e0 -> 0x896410 [HEAD - size:6]
+     # SplitTableCell@0x896410 -> 0x8964c0
+       > value = 2
+     # SplitTableCell@0x8964c0 -> 0x8965b0
+       > value = 4
+     # SplitTableCell@0x8965b0 -> 0x896640
+       > value = 1
+     # SplitTableCell@0x896640 -> 0x8966f0
+       > value = 2
+     # SplitTableCell@0x8966f0 -> 0x896760
+       > value = 0
+     # SplitTableCell@0x896760 [TAIL]
+       > value = 1
+ # SplitTable@0x8967f0 [TAIL]
+   > attributeRow = 0x894b30[ Defaulted_Borrower ]
+   > attributeColumn = 0x894a30[ Annual_Income ]
+   > GINI Split = 0.000000
+   > splitTableCellList = 0x896850
+     # SplitTableCell@0x896850 [BLANK]
