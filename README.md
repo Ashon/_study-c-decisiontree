@@ -53,12 +53,12 @@
 
 ##Input File Example
 <pre><code>
-#
+\#
 Home_Owner{No,Yes}
 Marital_Status{Single,Married,Divorced}
 Annual_Income{@}
 Defaulted_Borrower@{No,Yes}
-#
+\#
 1,0,125,0
 0,1,100,0
 0,0,70,0
