@@ -1,8 +1,7 @@
 #DecisionTree
 
 ##Abstract data types(ADTs) of decision tree generator.
-<pre><code>
-    ADT dependency
+<pre><code>ADT dependency
     +-> DecisionTree : decision tree
       |
       +---> intattributeLength : length of Attribute List (direct)
@@ -52,8 +51,7 @@
 </pre></code>
 
 ##Input File Example
-<pre><code>
-\#
+<pre><code>\#
 Home_Owner{No,Yes}
 Marital_Status{Single,Married,Divorced}
 Annual_Income{@}
