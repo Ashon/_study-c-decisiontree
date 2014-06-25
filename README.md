@@ -1,9 +1,7 @@
 #DecisionTree
 
-<pre><code>
 Abstract data types(ADTs) of decision tree generator.
-
- @description
+<pre><code>
     ADT dependency
     +-> DecisionTree : decision tree
       |
