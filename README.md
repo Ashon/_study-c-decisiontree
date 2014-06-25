@@ -1,5 +1,5 @@
 #DecisionTree
-Implementation decisiontree in c
+Decisiontree in C
 ##Abstract data types(ADTs) of decision tree generator.
 <pre><code>ADT dependency
     +-> DecisionTree : decision tree
